@@ -14,22 +14,10 @@ interface SpotlightBlockProps extends BlockProps {
   imageAlt?: string;
   imageCaption?: string;
   imageFootnote?: string;
-  /** Pin image to the viewport right side, synced with slide motion */
+  /** Pin image to the right column, sized to fit the slide */
   imageLayout?: "default" | "viewport-edge";
-  /** Horizontal anchor for viewport-edge layout */
-  imageViewportX?: "right-edge" | "right-half-center";
-  /** Vertical anchor — pins a line on the image to the viewport bottom */
-  imageViewportY?: "center" | "bottom";
-  /** Image height fraction from the bottom that sits flush on the viewport bottom (e.g. 0.2) */
-  imageBottomAnchor?: number;
-  /** Max height for the full device image (no cropping) */
+  /** Max height for the full device image (CSS length) */
   imageMaxHeight?: string;
-  /** Fine-tune horizontal position (e.g. "2vw") */
-  imageOffsetX?: string;
-  /** Fine-tune vertical position (e.g. "20%") */
-  imageOffsetY?: string;
-  /** Scale multiplier for the device image */
-  imageScale?: number;
 }
 
 export function SpotlightBlock({
@@ -43,13 +31,7 @@ export function SpotlightBlock({
   imageCaption,
   imageFootnote,
   imageLayout = "default",
-  imageViewportX = "right-half-center",
-  imageViewportY = "bottom",
-  imageBottomAnchor = 0.2,
-  imageMaxHeight = "min(78dvh, 720px)",
-  imageOffsetX = "0px",
-  imageOffsetY = "0px",
-  imageScale = 1,
+  imageMaxHeight = "min(calc(100dvh - 11rem), 640px)",
   className,
 }: SpotlightBlockProps) {
   const isViewportEdge = imageLayout === "viewport-edge";
@@ -57,9 +39,9 @@ export function SpotlightBlock({
   return (
     <div
       className={cn(
-        "deck-spotlight-sync relative w-full",
+        "deck-spotlight-sync relative w-full min-w-0",
         isViewportEdge
-          ? "grid grid-cols-1 items-center"
+          ? "grid grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,38%)] md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,42%)] lg:gap-14"
           : "grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16",
         className
       )}
@@ -67,7 +49,7 @@ export function SpotlightBlock({
       <div
         className={cn(
           "flex flex-col gap-6 md:gap-8",
-          isViewportEdge && "relative z-10 max-w-xl"
+          isViewportEdge && "relative z-10 min-w-0 max-w-xl"
         )}
       >
         <div className="flex flex-col gap-3 md:gap-4">
@@ -90,64 +72,27 @@ export function SpotlightBlock({
         </div>
       </div>
 
-      {isViewportEdge && (imageSrc || imageFootnote) ? (
-        <div className="pointer-events-none absolute top-1/2 left-1/2 h-dvh w-screen -translate-x-1/2 -translate-y-1/2 overflow-visible">
-          {imageFootnote && (
-            <div className="absolute inset-x-0 bottom-[4.25rem] z-10 px-6 md:bottom-[4.75rem] md:px-20">
-              <div className="mx-auto w-full max-w-5xl">
-                <p className="w-max max-w-none whitespace-nowrap text-[10px] leading-none text-muted/70 md:text-[11px]">
-                  {imageFootnote}
-                </p>
-              </div>
-            </div>
-          )}
-
-          {imageSrc ? (
-            <div className="absolute inset-0 hidden overflow-visible md:block" aria-hidden>
-            <div
-              className={cn(
-                "absolute",
-                imageViewportX === "right-half-center" ? "left-[75%]" : "right-0",
-                imageViewportY === "bottom" ? "bottom-0" : "top-1/2"
-              )}
-              style={{
-                transform:
-                  imageViewportX === "right-half-center"
-                    ? `translate(calc(-50% + ${imageOffsetX}), ${
-                        imageViewportY === "bottom" ? imageOffsetY : `calc(-50% + ${imageOffsetY})`
-                      })`
-                    : `translate(calc(50% + ${imageOffsetX}), ${
-                        imageViewportY === "bottom" ? imageOffsetY : `calc(-50% + ${imageOffsetY})`
-                      })`,
-              }}
-            >
-              <div
-                className="relative aspect-[1350/2760] w-auto"
-                style={{ height: imageMaxHeight }}
-              >
-                <div
-                  className="absolute inset-0 origin-bottom"
-                  style={{
-                    transform:
-                      imageViewportY === "bottom"
-                        ? `translateY(calc(${imageBottomAnchor * 100}%)) scale(${imageScale})`
-                        : `scale(${imageScale})`,
-                  }}
-                >
-                  <Image
-                    src={imageSrc}
-                    alt={imageAlt}
-                    fill
-                    className="bg-transparent object-contain object-bottom"
-                    sizes="40vw"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-            </div>
-          ) : null}
+      {isViewportEdge && imageSrc ? (
+        <div
+          className="relative hidden min-h-0 min-w-0 items-center justify-end md:flex"
+          aria-hidden
+        >
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={1350}
+            height={2760}
+            priority
+            className="h-auto w-auto max-w-full object-contain"
+            style={{ maxHeight: imageMaxHeight }}
+          />
         </div>
+      ) : null}
+
+      {isViewportEdge && imageFootnote ? (
+        <p className="col-span-full text-center text-[10px] leading-snug text-muted/70 md:text-[11px]">
+          {imageFootnote}
+        </p>
       ) : null}
 
       {!isViewportEdge ? (

@@ -137,13 +137,13 @@ export function ProductSlide() {
   return (
     <Slide
       id="patient-experience"
-      contentClassName="min-w-0 max-w-none gap-6 md:gap-7"
+      contentClassName="min-w-0 gap-6 md:gap-7"
     >
       <SlideIntro>
         <HeadingBlock>Trust breaks despite world-class infrastructure</HeadingBlock>
       </SlideIntro>
       <FeatureCarousel
-        className="-mx-6 md:-mx-4 mt-10"
+        className="mt-10 min-w-0"
         features={[
           {
             icon: <Icon3D variant="orchestration" />,
@@ -377,13 +377,6 @@ export function ImpactSlide() {
         imageSrc="/images/iphone-17-pro-deep-blue-portrait.png"
         imageAlt="iPhone displaying patient reports"
         imageLayout="viewport-edge"
-        imageViewportX="right-half-center"
-        imageViewportY="bottom"
-        imageBottomAnchor={0.2}
-        imageMaxHeight="min(78dvh, 720px)"
-        imageOffsetX="2vw"
-        imageOffsetY="5%"
-        imageScale={1.25}
         imageFootnote="Image shown is a prototype and is subject to changes in the production-ready application."
       />
     </Slide>
