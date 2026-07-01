@@ -2,14 +2,18 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import type { BlockProps, FeatureItem } from "./types";
+import {
+  HeadingBlock,
+  Icon3D,
+  Slide,
+  SlideIntro,
+} from "@/components/shared";
 
-export interface CarouselFeatureItem extends FeatureItem {
+interface CarouselFeature {
+  icon?: React.ReactNode;
+  title: string;
+  description: string;
   accent?: "blue" | "purple" | "green" | "sand";
-}
-
-interface FeatureCarouselProps extends BlockProps {
-  features: CarouselFeatureItem[];
 }
 
 const accentStyles = {
@@ -19,11 +23,42 @@ const accentStyles = {
   sand: "from-[#f5f0e8] via-[#faf6ef] to-[#fdfbf7]",
 };
 
-const defaultAccents: CarouselFeatureItem["accent"][] = [
+const defaultAccents: CarouselFeature["accent"][] = [
   "blue",
   "purple",
   "green",
   "sand",
+];
+
+const features: CarouselFeature[] = [
+  {
+    icon: <Icon3D variant="orchestration" />,
+    title: "Phantom appointments",
+    description:
+      "Online bookings via care.aarthiscan.com confirm slots — patients arrive to find specialists unavailable or capacity mismatched.",
+    accent: "blue",
+  },
+  {
+    icon: <Icon3D variant="guardrails" />,
+    title: "Broken digital onboarding",
+    description:
+      "Registration loops on the patient app lock users out when their mobile number is already registered — blocking report access.",
+    accent: "purple",
+  },
+  {
+    icon: <Icon3D variant="team" />,
+    title: "Home collection no-shows",
+    description:
+      "Fasting patients wait for phlebotomists who miss windows without tracking updates — despite Aarthi's home collection service.",
+    accent: "green",
+  },
+  {
+    icon: <Icon3D variant="pricing" />,
+    title: "TAT & pricing friction",
+    description:
+      "Promised 6-hour turnaround stretches to days. Published online prices sometimes conflict with on-site surcharges at centres.",
+    accent: "sand",
+  },
 ];
 
 function FeatureCarouselCard({
@@ -31,7 +66,7 @@ function FeatureCarouselCard({
   title,
   description,
   accent = "blue",
-}: CarouselFeatureItem) {
+}: CarouselFeature) {
   return (
     <article
       className={cn(
@@ -105,10 +140,7 @@ function CarouselArrow({
   );
 }
 
-export function FeatureCarousel({
-  features,
-  className,
-}: FeatureCarouselProps) {
+function PatientExperienceCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -134,7 +166,7 @@ export function FeatureCarousel({
       track.removeEventListener("scroll", updateScrollState);
       window.removeEventListener("resize", updateScrollState);
     };
-  }, [updateScrollState, features.length]);
+  }, [updateScrollState]);
 
   const scrollByCard = useCallback((direction: -1 | 1) => {
     const track = scrollRef.current;
@@ -147,7 +179,7 @@ export function FeatureCarousel({
   }, []);
 
   return (
-    <div className={cn("relative min-w-0", className)}>
+    <div className="relative mt-10 min-w-0">
       <div
         className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-background to-transparent md:w-12"
         aria-hidden
@@ -186,5 +218,16 @@ export function FeatureCarousel({
         />
       </div>
     </div>
+  );
+}
+
+export function ProductSlide() {
+  return (
+    <Slide id="patient-experience" contentClassName="min-w-0 gap-6 md:gap-7">
+      <SlideIntro>
+        <HeadingBlock>Trust breaks despite world-class infrastructure</HeadingBlock>
+      </SlideIntro>
+      <PatientExperienceCarousel />
+    </Slide>
   );
 }

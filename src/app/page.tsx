@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { DeckContainer } from "@/components/deck";
-import { slideLabels, slides } from "@/components/pitch/PitchSlides";
+import { slideLabels, slides } from "@/components/slides";
 
 function isSlideComponent(component: unknown): component is () => ReactNode {
   return typeof component === "function";

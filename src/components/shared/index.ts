@@ -1,0 +1,11 @@
+export { Slide } from "./Slide";
+export { SlideIntro, SlideIntroSection } from "./SlideIntro";
+export { Eyebrow } from "./Eyebrow";
+export { HeadingBlock } from "./HeadingBlock";
+export { TextBlock } from "./TextBlock";
+export { CTABlock } from "./CTABlock";
+export { StatBlock } from "./StatBlock";
+export { StatGrid, StatGridGroup } from "./StatGrid";
+export { ComparisonTable } from "./ComparisonTable";
+export { Icon3D } from "./Icon3D";
+export type { Icon3DVariant } from "./Icon3D";

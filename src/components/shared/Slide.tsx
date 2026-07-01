@@ -10,6 +10,7 @@ const variantStyles = {
 export function Slide({
   id,
   children,
+  footer,
   className,
   contentClassName,
   variant = "default",
@@ -33,6 +34,11 @@ export function Slide({
       >
         {children}
       </div>
+      {footer ? (
+        <div className="absolute inset-x-6 bottom-28 md:inset-x-20 md:bottom-32">
+          <div className="mx-auto w-full max-w-5xl">{footer}</div>
+        </div>
+      ) : null}
     </section>
   );
 }
