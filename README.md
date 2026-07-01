@@ -1,12 +1,9 @@
 # Pitch Deck
 
-A vertically scrolling pitch deck built with Next.js, optimized for both desktop and mobile.
+A vertically scrolling pitch deck built with Next.js, optimized for desktop.
 
 ## Features
-
-- **All devices**: Full-viewport vertical swipe/scroll with snap points
 - **Desktop**: Side dot navigation + keyboard (↑ ↓ or arrow keys)
-- **Mobile**: Bottom progress bar with touch-friendly swipe
 - **Reusable blocks**: Every UI element is a composable component in `src/components/blocks/`
 
 ## Getting Started
