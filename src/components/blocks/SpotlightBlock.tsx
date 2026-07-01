@@ -70,6 +70,12 @@ export function SpotlightBlock({
           </p>
           <p className="text-sm font-medium text-muted md:text-base">{statLabel}</p>
         </div>
+
+        {isViewportEdge && imageFootnote ? (
+          <p className="mt-15 text-left text-[10px] leading-snug text-muted/70 md:mt-20 md:text-[11px]">
+            {imageFootnote}
+          </p>
+        ) : null}
       </div>
 
       {isViewportEdge && imageSrc ? (
@@ -87,12 +93,6 @@ export function SpotlightBlock({
             style={{ maxHeight: imageMaxHeight }}
           />
         </div>
-      ) : null}
-
-      {isViewportEdge && imageFootnote ? (
-        <p className="col-span-full text-center text-[10px] leading-snug text-muted/70 md:text-[11px]">
-          {imageFootnote}
-        </p>
       ) : null}
 
       {!isViewportEdge ? (
