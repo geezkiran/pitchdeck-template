@@ -193,6 +193,8 @@ export function CompetitiveSlide() {
       id="competitive-landscape"
       variant="muted"
       pinFooter
+      className="pt-14 md:pt-10"
+      contentClassName="gap-2 md:gap-3"
       footerClassName="bottom-20 md:bottom-24"
       footer={
         <p className="text-right text-[10px] leading-snug text-muted/70 md:text-[11px]">
@@ -202,9 +204,9 @@ export function CompetitiveSlide() {
       }
     >
       <SlideLead>
-        <HeadingBlock size="lg">Current Market Positioning</HeadingBlock>
+        <HeadingBlock size="lg">Current Market Landscape</HeadingBlock>
       </SlideLead>
-      <SlideBody>
+      <SlideBody className="mt-0">
         <DiagnosticCompareTable />
       </SlideBody>
     </Slide>

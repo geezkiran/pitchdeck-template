@@ -31,14 +31,14 @@ export function TractionSlide() {
         <StatGrid
           columns={4}
           stats={[
-            { value: "#5", label: "Staff behaviour" },
+            
             { value: "#6", label: "Pricing & refunds" },
             { value: "#7", label: "Mismatched results" },
           ]}
         />
       </StatGridGroup>
       <TextBlock size="sm">
-          Against a 4.8 star average across 28k+ reviews, these gaps appear
+          Against 28k+ reviews, these gaps appear
           repeatedly in feedback and directly affect medical decisions.
         </TextBlock>
       </SlideBody>

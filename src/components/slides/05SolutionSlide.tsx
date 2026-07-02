@@ -13,7 +13,8 @@ import {
 interface CompetitorPoint {
   id: string;
   name: string;
-  logo: string;
+  shortLabel: string;
+  logo?: string;
   x: number;
   y: number;
   featured?: boolean;
@@ -24,32 +25,169 @@ const competitors: CompetitorPoint[] = [
   {
     id: "aarthi",
     name: "Aarthi Scans",
+    shortLabel: "Aarthi",
     logo: "/images/competitors/aarthi.webp",
-    x: 44,
-    y: 58,
+    x: 48,
+    y: 54,
     featured: true,
   },
   {
     id: "orange",
     name: "Orange Health",
+    shortLabel: "Orange",
     logo: "/images/competitors/orange-health.svg",
-    x: 55,
-    y: 80,
+    x: 70,
+    y: 82,
   },
   {
     id: "lal",
     name: "Dr. Lal PathLabs",
+    shortLabel: "Dr. Lal",
     logo: "/images/competitors/lal-pathlabs.png",
-    x: 43,
-    y: 84,
+    x: 86,
+    y: 90,
+  },
+  {
+    id: "srl",
+    name: "SRL Diagnostics",
+    shortLabel: "SRL",
+    x: 82,
+    y: 86,
+  },
+  {
+    id: "apollo",
+    name: "Apollo Diagnostics",
+    shortLabel: "Apollo",
+    x: 78,
+    y: 92,
   },
   {
     id: "metropolis",
-    name: "Metropolis",
+    name: "Metropolis Healthcare",
+    shortLabel: "Metropolis",
     logo: "/images/competitors/metropolis-logo.svg",
-    x: 36,
-    y: 75,
+    x: 88,
+    y: 78,
     invert: true,
+  },
+  {
+    id: "thyrocare",
+    name: "Thyrocare",
+    shortLabel: "Thyrocare",
+    x: 84,
+    y: 84,
+  },
+  {
+    id: "max",
+    name: "Max Healthcare",
+    shortLabel: "Max",
+    x: 66,
+    y: 74,
+  },
+  {
+    id: "vijaya",
+    name: "Vijaya Diagnostic Centre",
+    shortLabel: "Vijaya",
+    x: 56,
+    y: 70,
+  },
+  {
+    id: "24x7",
+    name: "24×7 Labs",
+    shortLabel: "24×7",
+    x: 60,
+    y: 64,
+  },
+  {
+    id: "diligent",
+    name: "Diligent Health",
+    shortLabel: "Diligent",
+    x: 46,
+    y: 62,
+  },
+  {
+    id: "quest",
+    name: "Quest Diagnostics",
+    shortLabel: "Quest",
+    x: 92,
+    y: 66,
+  },
+  {
+    id: "labcorp",
+    name: "LabCorp",
+    shortLabel: "LabCorp",
+    x: 94,
+    y: 60,
+  },
+  {
+    id: "unichem",
+    name: "Unichem Laboratories",
+    shortLabel: "Unichem",
+    x: 42,
+    y: 58,
+  },
+  {
+    id: "hitech",
+    name: "Hitech Diagnostic Centre",
+    shortLabel: "Hitech",
+    x: 34,
+    y: 52,
+  },
+  {
+    id: "indo-american",
+    name: "Indo American Health",
+    shortLabel: "Indo American",
+    x: 28,
+    y: 46,
+  },
+  {
+    id: "satyam",
+    name: "Satyam Diagnostic Centre",
+    shortLabel: "Satyam",
+    x: 38,
+    y: 48,
+  },
+  {
+    id: "orchard",
+    name: "Orchard Healthcare",
+    shortLabel: "Orchard",
+    x: 32,
+    y: 42,
+  },
+  {
+    id: "redcliffe",
+    name: "Redcliffe Labs",
+    shortLabel: "Redcliffe",
+    x: 64,
+    y: 76,
+  },
+  {
+    id: "medanta",
+    name: "Medanta The Medicity",
+    shortLabel: "Medanta",
+    x: 72,
+    y: 72,
+  },
+  {
+    id: "agilus",
+    name: "Agilus Diagnostics",
+    shortLabel: "Agilus",
+    x: 54,
+    y: 68,
+  },
+  {
+    id: "oncquest",
+    name: "Oncquest Laboratories",
+    shortLabel: "Oncquest",
+    x: 50,
+    y: 72,
+  },
+  {
+    id: "medall",
+    name: "Medall Diagnostics",
+    shortLabel: "Medall",
+    x: 58,
+    y: 66,
   },
 ];
 
@@ -119,10 +257,11 @@ function lineThroughPoint(
   };
 }
 
-function LogoMarker({
+function CompanyMarker({
   cx,
   cy,
   logo,
+  shortLabel,
   name,
   featured,
   invert,
@@ -130,18 +269,20 @@ function LogoMarker({
 }: {
   cx: number;
   cy: number;
-  logo: string;
+  logo?: string;
+  shortLabel: string;
   name: string;
   featured?: boolean;
   invert?: boolean;
   delay: number;
 }) {
-  const width = featured ? 72 : 64;
-  const height = featured ? 44 : 38;
+  const hasLogo = Boolean(logo);
+  const width = featured ? 68 : hasLogo ? 56 : Math.min(88, Math.max(42, shortLabel.length * 5.4 + 14));
+  const height = featured ? 38 : hasLogo ? 30 : 22;
   const halfW = width / 2;
   const halfH = height / 2;
-  const padX = featured ? 8 : 6;
-  const padY = featured ? 6 : 5;
+  const padX = featured ? 7 : 5;
+  const padY = featured ? 5 : 4;
 
   return (
     <g
@@ -153,21 +294,35 @@ function LogoMarker({
         y={cy - halfH}
         width={width}
         height={height}
-        rx={10}
+        rx={hasLogo ? 8 : 999}
         fill="#ffffff"
         stroke={featured ? "rgba(0,113,227,0.35)" : "rgba(0,0,0,0.08)"}
         strokeWidth={featured ? 1.5 : 1}
       />
-      <image
-        href={logo}
-        x={cx - halfW + padX}
-        y={cy - halfH + padY}
-        width={width - padX * 2}
-        height={height - padY * 2}
-        preserveAspectRatio="xMidYMid meet"
-        aria-label={name}
-        style={invert ? { filter: "invert(1)" } : undefined}
-      />
+      {hasLogo ? (
+        <image
+          href={logo}
+          x={cx - halfW + padX}
+          y={cy - halfH + padY}
+          width={width - padX * 2}
+          height={height - padY * 2}
+          preserveAspectRatio="xMidYMid meet"
+          aria-label={name}
+          style={invert ? { filter: "invert(1)" } : undefined}
+        />
+      ) : (
+        <text
+          x={cx}
+          y={cy + (featured ? 4 : 3.5)}
+          textAnchor="middle"
+          fill={featured ? "#0071e3" : "#3a3a3c"}
+          fontSize={featured ? 9 : 7.5}
+          fontWeight={600}
+          aria-label={name}
+        >
+          {shortLabel}
+        </text>
+      )}
     </g>
   );
 }
@@ -347,22 +502,23 @@ function FutureReadinessChart() {
           />
 
           {competitors.map((competitor, index) => (
-            <LogoMarker
+            <CompanyMarker
               key={competitor.id}
               cx={xScale(competitor.x)}
               cy={yScale(competitor.y)}
               logo={competitor.logo}
+              shortLabel={competitor.shortLabel}
               name={competitor.name}
               featured={competitor.featured}
               invert={competitor.invert}
-              delay={220 + index * 140}
+              delay={120 + index * 40}
             />
           ))}
         </svg>
 
         <figcaption className="deck-survey-chart-legend mt-3 text-center text-[10px] leading-snug text-muted/70 md:text-[11px]">
-          Scores from competitive analysis.
-          Logos: official brand assets.
+          Representative positioning of 23 diagnostic players. Logos shown where
+          official assets are available.
         </figcaption>
       </figure>
     </div>
