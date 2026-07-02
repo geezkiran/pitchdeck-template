@@ -1,43 +1,46 @@
 import { AboutSlide } from "./02AboutSlide";
 import { CompetitiveSlide } from "./03CompetitiveSlide";
-import { SolutionSlide } from "./04SolutionSlide";
-import { ProductSlide } from "./05ProductSlide";
-import { MarketSlide } from "./06MarketSlide";
-import { TractionSlide } from "./07TractionSlide";
-import { BusinessModelSlide } from "./08BusinessModelSlide";
-import { RoadmapSlide } from "./09RoadmapSlide";
-import { TeamSlide } from "./10TeamSlide";
-import { ImpactSlide } from "./11ImpactSlide";
-import { PerformanceSlide } from "./12PerformanceSlide";
-import { AskSlide } from "./13AskSlide";
+import { IndustryDirectionSlide } from "./04IndustryDirectionSlide";
+import { SolutionSlide } from "./05SolutionSlide";
+import { TractionSlide } from "./08TractionSlide";
+import { TeamSlide } from "./11TeamSlide";
+import { ImpactSlide } from "./12ImpactSlide";
+import { PerformanceSlide } from "./13PerformanceSlide";
+import { AskSlide } from "./14AskSlide";
 import { TitleSlide } from "./01TitleSlide";
 
+/** Narrative: introduction → about → current market → future market → loose ends → solution → expected results → ask */
+export const slideSections = [
+  { label: "Introduction", slides: [0] },
+  { label: "About", slides: [1] },
+  { label: "Current market", slides: [2] },
+  { label: "Future market", slides: [3] },
+  { label: "Loose ends", slides: [4, 5] },
+  { label: "Solution", slides: [6] },
+  { label: "Expected results", slides: [7, 8] },
+  { label: "The ask", slides: [9] },
+] as const;
+
 export const slideLabels = [
-  "Title",
+  "Introduction",
   "About Aarthi",
-  "Competitive Landscape",
-  "Lab Operations",
-  "Patient Experience",
-  "Report Delays",
+  "Current Market",
+  "Future Market",
+  "Future Readiness",
   "Voice of Customer",
-  "Proposed Changes",
-  "Roadmap",
   "Key Initiatives",
   "Impact",
   "Performance",
-  "Next Steps",
+  "The Ask",
 ];
 
 export const slides = [
   TitleSlide,
   AboutSlide,
   CompetitiveSlide,
+  IndustryDirectionSlide,
   SolutionSlide,
-  ProductSlide,
-  MarketSlide,
   TractionSlide,
-  BusinessModelSlide,
-  RoadmapSlide,
   TeamSlide,
   ImpactSlide,
   PerformanceSlide,

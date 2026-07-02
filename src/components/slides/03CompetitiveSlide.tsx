@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { HeadingBlock, Slide } from "@/components/shared";
+import { HeadingBlock, Slide, SlideBody, SlideLead } from "@/components/shared";
 
 type CompareCell = string;
 
@@ -19,68 +19,61 @@ interface CompareRow {
 }
 
 const brands: CompareBrand[] = [
-  { id: "aarthi", name: "Aarthi Scan & Labs", shortName: "Aarthi Labs", featured: true },
-  { id: "orange", name: "Orange Health Labs", shortName: "Orange Health" },
-  { id: "lal", name: "Dr. Lal PathLabs", shortName: "Dr. Lal's" },
-  { id: "metropolis", name: "Metropolis Healthcare", shortName: "Metropolis" },
+  { id: "aarthi", name: "Aarthi Scan & Labs", shortName: "Aarthi Scans", featured: true },
+  { id: "orange", name: "Orange Health Labs", shortName: "Orange Health Labs" },
+  { id: "lal", name: "Dr. Lal PathLabs", shortName: "Dr. Lal PathLabs" },
+  { id: "metropolis", name: "Metropolis Healthcare", shortName: "Metropolis Healthcare" },
 ];
 
 const compareRows: CompareRow[] = [
   {
-    feature: "Public disclosure",
-    aarthi: "Limited consolidated filings; fragmented across franchises",
-    metropolis: "Publicly listed; extensive corporate reporting",
-    lal: "Publicly listed; detailed quarterly & annual filings",
-    orange: "Private; limited public financial disclosures",
+    feature: "Cloud & digital stack",
+    aarthi: "Web app + Mobile app; LIMS/franchisee sync still fragmented across 200+ centres",
+    orange: "Full-stack digital platform; hub logistics + instant booking; scaling to 200 collection centres",
+    lal: "Microsoft D365 unified ERP, LIMS, POS & home-collection apps rolled out FY25",
+    metropolis: "Integrated CRM–ERP; cloud-led digital transformation across lab & B2B ops",
   },
   {
-    feature: "Revenue / scale",
-    aarthi: "Regional multi-city chain; smaller national footprint",
-    metropolis: "Large national chain; high consolidated revenue",
-    lal: "FY25 ~₹2,461 cr; ~20.9M samples/quarter",
-    orange: "Smaller scale; urban footprint growing",
+    feature: "Artificial intelligence",
+    aarthi: "8 AI radiology models + Smart Report; ChatGPT proofreading pipeline in build",
+    orange: "Digital reporting & routing ops; limited public AI diagnostics stack disclosed",
+    lal: "Reco.ai recommendation engine; ML logistics app; AI chatbot for bookings & tracking",
+    metropolis: "MetAdvisor AI engine; AI prostate biopsy, karyotyping & lab workflow automation",
   },
   {
-    feature: "Revenue per patient",
-    aarthi: "Not centrally disclosed; likely lower ARPU",
-    metropolis: "Large test menu; packages lift cross-sell & ARPU",
-    lal: "~₹887/patient; ~3.07 tests/patient (Q4 FY25)",
-    orange: "Not disclosed; varies by city & home-collection mix",
+    feature: "Home collection & booking",
+    aarthi: "Home blood collection in 12 states; online slots via care.aarthiscan.com",
+    orange: "Core model: ~30-min home collection; live in Bengaluru, Mumbai, Delhi-NCR & Hyderabad",
+    lal: "Omni-channel app + home-collection portal; 6,607 PSCs & 12,365 pick-up points",
+    metropolis: "App booking with AI test suggestions; home ECG & vital checks added FY25",
   },
   {
-    feature: "EBITDA margin",
-    aarthi: "Not publicly reported (consolidated)",
-    metropolis: "Strong; industry-leading at national scale",
-    lal: "~28.3% (FY25)",
-    orange: "Not publicly disclosed",
+    feature: "Sample & data tracking",
+    aarthi: "Smart Report & WhatsApp delivery; chain-of-custody from home collection still a gap",
+    orange: "Proprietary hub-and-spoke logistics; digital report delivery within 6 hours",
+    lal: "Live order status in app; ML-optimised phlebotomist routes & sample pickup tracking",
+    metropolis: "Real-time sample tracking in revamped app — collection through to result",
   },
   {
-    feature: "PAT margin",
-    aarthi: "Not available publicly",
-    metropolis: "Healthy; scale & centralized operations",
-    lal: "~20% (FY25)",
-    orange: "Not publicly disclosed",
+    feature: "Preventive & personalised",
+    aarthi: "Smart Report health scores & packages from ₹999; imaging + lab under one roof",
+    orange: "Routine & preventive panels; personalisation limited vs national chains",
+    lal: "Swasthfit preventive portfolio; 385 panels & 3,172 pathology tests; 28.8M patients FY25",
+    metropolis: "TruHealth +24% YoY FY25; MetAdvisor personalised test recommendations",
   },
   {
-    feature: "Pricing transparency",
-    aarthi: "Fragmented local pricing; less centralized",
-    metropolis: "High transparency; standardized packages",
-    lal: "Strong app visibility; national pricing & tie-ups",
-    orange: "Competitive urban pricing; less exhaustive lists",
+    feature: "Report turnaround",
+    aarthi: "6-hour TAT promise; delays often pre- & post-analytical despite Smart Report",
+    orange: "6-hour report SLA; 30-min collection — benchmark for digital-first speed",
+    lal: "Expected TAT in app; national-lab processing — no marketed 6-hour chain-wide SLA",
+    metropolis: "AI shortens specialty TAT (e.g. karyotyping); standard lab TAT by test type",
   },
   {
-    feature: "Expansion & capex",
-    aarthi: "Organic regional growth; imaging capex (MRI/CT)",
-    metropolis: "Network expansion & lab automation",
-    lal: "Heavy network & digital investment",
-    orange: "Urban home-collection; asset-light partner labs",
-  },
-  {
-    feature: "Profitability drivers",
-    aarthi: "Constrained by scale & inconsistent pricing",
-    metropolis: "Scale, packages & centralized lab processing",
-    lal: "Scale, ARPU, digital channels & corporate contracts",
-    orange: "Service/collection-centric; partner-lab dependent",
+    feature: "Network scale",
+    aarthi: "FY25 ~₹301 cr revenue; 200+ integrated imaging + lab centres across 12 states",
+    orange: "FY25 ~₹84–138 cr revenue; ~₹180 cr ARR; 75+ owned centres; 4–5 metro cities",
+    lal: "FY25 ₹2,461 cr revenue; 298 labs; 28.3% EBITDA; 86M samples processed",
+    metropolis: "FY25 ₹1,331 cr revenue; 24.4% adj. EBITDA; 19 markets incl. India & global labs",
   },
 ];
 
@@ -105,12 +98,14 @@ function CompareCellContent({
 
 function DiagnosticCompareTable() {
   const brandKeys = ["aarthi", "orange", "lal", "metropolis"] as const;
+  const highlightedBoxClass =
+    "bg-background pl-3 pr-2 mr-3 md:pl-4 md:pr-2.5 md:mr-4";
 
   return (
-    <div className="deck-compare-table -mx-1 min-w-0">
-      <div className="overflow-x-auto overscroll-x-contain pb-1">
-        <div className="min-w-[720px] lg:min-w-0">
-          <div className="grid grid-cols-[minmax(6.5rem,1fr)_repeat(4,minmax(5.75rem,1fr))] gap-0">
+    <div className="deck-compare-table w-full min-w-0 lg:mx-auto">
+      <div className="overflow-x-auto overscroll-x-contain pb-1 lg:overflow-visible lg:pb-0">
+        <div className="min-w-[720px] lg:mx-auto lg:min-w-0 lg:w-full">
+          <div className="grid grid-cols-[minmax(6.5rem,1fr)_repeat(4,minmax(5.75rem,1fr))] gap-0 lg:grid-cols-[minmax(8rem,1.15fr)_repeat(4,minmax(0,1fr))]">
             <div className="sticky left-0 z-20 min-h-[2.75rem] bg-surface md:min-h-[3rem]" aria-hidden />
 
             {brands.map((brand) => (
@@ -119,13 +114,16 @@ function DiagnosticCompareTable() {
                 className={cn(
                   "flex min-h-[2.75rem] flex-col justify-end px-2 pb-3 md:min-h-[3rem] md:px-3",
                   brand.featured &&
-                    "min-h-[3rem] rounded-t-[14px] bg-background pt-1 md:min-h-[3.25rem] md:pt-1.5"
+                    cn(
+                      highlightedBoxClass,
+                      "min-h-[3rem] rounded-t-[14px] pt-1 md:min-h-[3.25rem] md:pt-1.5"
+                    )
                 )}
               >
                 <p
                   className={cn(
-                    "text-center text-base font-semibold leading-tight tracking-[-0.02em] md:text-lg lg:text-lg",
-                    brand.featured ? "text-blue-500" : "text-muted"
+                    "text-left text-base font-semibold leading-tight tracking-[-0.02em] md:text-lg lg:text-lg",
+                    brand.featured ? "text-primary" : "text-muted"
                   )}
                 >
                   {brand.shortName}
@@ -156,7 +154,7 @@ function DiagnosticCompareTable() {
                         rowIndex > 0 &&
                           !brand.featured &&
                           "border-t border-surface-border",
-                        brand.featured && "bg-background"
+                        brand.featured && highlightedBoxClass
                       )}
                     >
                       <CompareCellContent
@@ -175,7 +173,7 @@ function DiagnosticCompareTable() {
               return brand.featured ? (
                 <div
                   key={`${key}-pad`}
-                  className="rounded-b-[14px] bg-background pb-5 md:pb-6"
+                  className={cn(highlightedBoxClass, "rounded-b-[14px] pb-2 md:pb-2")}
                   aria-hidden
                 />
               ) : (
@@ -194,16 +192,21 @@ export function CompetitiveSlide() {
     <Slide
       id="competitive-landscape"
       variant="muted"
-      className="justify-start pt-14 md:pt-16"
-      contentClassName="gap-5 md:gap-6"
+      pinFooter
+      footerClassName="bottom-20 md:bottom-24"
       footer={
         <p className="text-right text-[10px] leading-snug text-muted/70 md:text-[11px]">
-          Based on publicly available financial disclosures and company filings where available.
+           Competitor data from FY25 public filings, investor releases & company
+          disclosures where available.
         </p>
       }
     >
-      <HeadingBlock size="lg">Current Market Positioning</HeadingBlock>
-      <DiagnosticCompareTable />
+      <SlideLead>
+        <HeadingBlock size="lg">Current Market Positioning</HeadingBlock>
+      </SlideLead>
+      <SlideBody>
+        <DiagnosticCompareTable />
+      </SlideBody>
     </Slide>
   );
 }

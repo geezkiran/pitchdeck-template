@@ -14,28 +14,42 @@ export function Slide({
   className,
   contentClassName,
   variant = "default",
+  centerContent = true,
+  pinFooter = false,
+  footerClassName,
 }: SlideProps) {
   return (
     <section
       id={id}
       data-slide
       className={cn(
-        "relative flex h-dvh w-full shrink-0 snap-start snap-always flex-col justify-center overflow-hidden",
+        "relative flex h-dvh w-full shrink-0 snap-start snap-always flex-col justify-start overflow-hidden",
         "px-6 pt-20 pb-28 md:px-20 md:pt-24 md:pb-32",
         variantStyles[variant === "dark" ? "muted" : variant],
         className
       )}
     >
-      <div
-        className={cn(
-          "slide-content mx-auto flex w-full max-w-5xl flex-col gap-7 md:gap-9",
-          contentClassName
-        )}
-      >
-        {children}
+      <div className="slide-content mx-auto flex min-h-0 w-full max-w-5xl flex-1 flex-col">
+        <div
+          className={cn(
+            "flex min-h-0 flex-1 flex-col gap-7 md:gap-9",
+            centerContent ? "justify-center" : "justify-start",
+            contentClassName
+          )}
+        >
+          {children}
+        </div>
+        {footer && !pinFooter ? (
+          <div className="shrink-0 pt-4 md:pt-5">{footer}</div>
+        ) : null}
       </div>
-      {footer ? (
-        <div className="absolute inset-x-6 bottom-28 md:inset-x-20 md:bottom-32">
+      {footer && pinFooter ? (
+        <div
+          className={cn(
+            "absolute inset-x-6 bottom-11 md:inset-x-20 md:bottom-12",
+            footerClassName
+          )}
+        >
           <div className="mx-auto w-full max-w-5xl">{footer}</div>
         </div>
       ) : null}

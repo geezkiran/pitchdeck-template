@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { HeadingBlock, Slide, SlideIntro } from "@/components/shared";
+import { HeadingBlock, Slide, SlideBody, SlideIntro, SlideLead } from "@/components/shared";
 
 interface TimelineEntry {
   period: string;
@@ -66,18 +66,22 @@ function RoadmapTimelineItem({
 export function RoadmapSlide() {
   return (
     <Slide id="roadmap">
-      <SlideIntro>
-        <HeadingBlock>Phased rollout across 12 states</HeadingBlock>
-      </SlideIntro>
-      <div>
-        {roadmapEntries.map((entry, index) => (
-          <RoadmapTimelineItem
-            key={entry.title}
-            {...entry}
-            isLast={index === roadmapEntries.length - 1}
-          />
-        ))}
-      </div>
+      <SlideLead>
+        <SlideIntro>
+          <HeadingBlock>Phased rollout across 12 states</HeadingBlock>
+        </SlideIntro>
+      </SlideLead>
+      <SlideBody>
+        <div>
+          {roadmapEntries.map((entry, index) => (
+            <RoadmapTimelineItem
+              key={entry.title}
+              {...entry}
+              isLast={index === roadmapEntries.length - 1}
+            />
+          ))}
+        </div>
+      </SlideBody>
     </Slide>
   );
 }

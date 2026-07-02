@@ -6,7 +6,9 @@ import {
   HeadingBlock,
   Icon3D,
   Slide,
+  SlideBody,
   SlideIntro,
+  SlideLead,
 } from "@/components/shared";
 
 interface CarouselFeature {
@@ -224,10 +226,14 @@ function PatientExperienceCarousel() {
 export function ProductSlide() {
   return (
     <Slide id="patient-experience" contentClassName="min-w-0 gap-6 md:gap-7">
-      <SlideIntro>
-        <HeadingBlock>Trust breaks despite world-class infrastructure</HeadingBlock>
-      </SlideIntro>
-      <PatientExperienceCarousel />
+      <SlideLead>
+        <SlideIntro>
+          <HeadingBlock>Vulnerabilities in operational execution</HeadingBlock>
+        </SlideIntro>
+      </SlideLead>
+      <SlideBody>
+        <PatientExperienceCarousel />
+      </SlideBody>
     </Slide>
   );
 }

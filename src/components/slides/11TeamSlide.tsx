@@ -3,7 +3,9 @@ import {
   HeadingBlock,
   Icon3D,
   Slide,
+  SlideBody,
   SlideIntro,
+  SlideLead,
 } from "@/components/shared";
 
 interface InitiativeFeature {
@@ -64,14 +66,16 @@ function InitiativeCard({
 export function TeamSlide() {
   return (
     <Slide id="initiatives" variant="muted">
-      <SlideIntro>
-        <HeadingBlock>Four pillars to close the gap</HeadingBlock>
-      </SlideIntro>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+      <SlideLead>
+        <SlideIntro>
+          <HeadingBlock>Four pillars to close the gap</HeadingBlock>
+        </SlideIntro>
+      </SlideLead>
+      <SlideBody className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
         {initiatives.map((feature) => (
           <InitiativeCard key={feature.title} {...feature} />
         ))}
-      </div>
+      </SlideBody>
     </Slide>
   );
 }

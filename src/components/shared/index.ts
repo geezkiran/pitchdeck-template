@@ -1,5 +1,6 @@
 export { Slide } from "./Slide";
 export { SlideIntro, SlideIntroSection } from "./SlideIntro";
+export { SlideLead, SlideBody } from "./SlideLead";
 export { Eyebrow } from "./Eyebrow";
 export { HeadingBlock } from "./HeadingBlock";
 export { TextBlock } from "./TextBlock";

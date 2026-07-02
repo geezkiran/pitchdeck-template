@@ -2,7 +2,9 @@ import {
   Eyebrow,
   HeadingBlock,
   Slide,
+  SlideBody,
   SlideIntro,
+  SlideLead,
   StatGrid,
   StatGridGroup,
 } from "@/components/shared";
@@ -10,20 +12,23 @@ import {
 export function AboutSlide() {
   return (
     <Slide id="about-aarthi">
-      <SlideIntro>
-        <Eyebrow>About Aarthi Scans & Labs</Eyebrow>
-        <HeadingBlock>India&apos;s leading integrated diagnostic chain</HeadingBlock>
-      </SlideIntro>
-      <p className="max-w-3xl text-base font-medium leading-relaxed text-muted sm:text-lg">
-        <span className="text-foreground">
-          Founded by Er. V. Govindarajan,{" "}
-        </span>
-        <span className="text-muted">
-          Aarthi Scan & Labs delivers MRI, CT, ultrasound, X-ray, blood tests, and preventive health
-          packages across 12 states with all modalities under one roof.
-        </span>
-      </p>
-      <StatGridGroup>
+      <SlideLead>
+        <SlideIntro>
+          <Eyebrow>About Aarthi Scans & Labs</Eyebrow>
+          <HeadingBlock>India&apos;s leading integrated diagnostic chain</HeadingBlock>
+        </SlideIntro>
+        <p className="max-w-3xl text-base font-medium leading-relaxed text-muted sm:text-lg">
+          <span className="text-foreground">
+            Founded by Er. V. Govindarajan,{" "}
+          </span>
+          <span className="text-muted">
+            Aarthi Scan & Labs delivers MRI, CT, ultrasound, X-ray, blood tests, and preventive health
+            packages across 12 states with all modalities under one roof.
+          </span>
+        </p>
+      </SlideLead>
+      <SlideBody>
+        <StatGridGroup>
         <StatGrid
           columns={4}
           stats={[
@@ -40,6 +45,7 @@ export function AboutSlide() {
           ]}
         />
       </StatGridGroup>
+      </SlideBody>
     </Slide>
   );
 }

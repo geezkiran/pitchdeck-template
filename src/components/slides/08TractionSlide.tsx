@@ -1,7 +1,9 @@
 import {
   HeadingBlock,
   Slide,
+  SlideBody,
   SlideIntro,
+  SlideLead,
   StatGrid,
   StatGridGroup,
   TextBlock,
@@ -10,14 +12,13 @@ import {
 export function TractionSlide() {
   return (
     <Slide id="voice-of-customer">
-      <SlideIntro>
-        <HeadingBlock>What patients report most</HeadingBlock>
-      </SlideIntro>
-      <TextBlock size="sm">
-        Against a 4.8 star average across 28,000+ reviews, these gaps appear
-        repeatedly in feedback and directly affect medical decisions.
-      </TextBlock>
-      <StatGridGroup>
+      <SlideLead>
+        <SlideIntro>
+          <HeadingBlock>Vulnerabilities in operational execution</HeadingBlock>
+        </SlideIntro>
+      </SlideLead>
+      <SlideBody className="flex flex-col gap-6 md:gap-8">
+        <StatGridGroup>
         <StatGrid
           columns={4}
           stats={[
@@ -36,6 +37,11 @@ export function TractionSlide() {
           ]}
         />
       </StatGridGroup>
+      <TextBlock size="sm">
+          Against a 4.8 star average across 28k+ reviews, these gaps appear
+          repeatedly in feedback and directly affect medical decisions.
+        </TextBlock>
+      </SlideBody>
     </Slide>
   );
 }

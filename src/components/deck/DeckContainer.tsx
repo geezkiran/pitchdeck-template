@@ -10,7 +10,7 @@ interface DeckContainerProps {
   slideLabels: string[];
 }
 
-const SCROLL_HINT_IDLE_MS = 6000;
+const SCROLL_HINT_IDLE_MS = 30000;
 
 export function DeckContainer({ children, slideLabels }: DeckContainerProps) {
   const containerRef = useRef<HTMLDivElement>(null);

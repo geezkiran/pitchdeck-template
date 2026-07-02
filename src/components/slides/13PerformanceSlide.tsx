@@ -797,8 +797,9 @@ export function PerformanceSlide() {
     <Slide
       id="performance"
       variant="muted"
-      className="items-stretch justify-start pb-28 pt-16 md:pb-32 md:pt-20"
-      contentClassName="flex min-h-[calc(100dvh-10rem)] flex-1 flex-col gap-4 md:min-h-[calc(100dvh-11rem)] md:gap-5"
+      centerContent={false}
+      className="items-stretch pt-16 md:pt-20"
+      contentClassName="min-h-0 flex-1 gap-4 md:gap-5"
     >
       <div className="flex min-h-0 flex-1 flex-col gap-4">
         <div className="grid flex-1 grid-cols-1 items-stretch gap-4 lg:grid-cols-[8fr_4fr] lg:gap-3">

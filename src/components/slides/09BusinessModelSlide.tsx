@@ -2,18 +2,23 @@ import {
   ComparisonTable,
   HeadingBlock,
   Slide,
+  SlideBody,
   SlideIntro,
+  SlideLead,
 } from "@/components/shared";
 
 export function BusinessModelSlide() {
   return (
     <Slide id="proposed-changes" variant="muted">
-      <SlideIntro>
-        <HeadingBlock gradient>
-          Closing the promise–delivery gap at Aarthi
-        </HeadingBlock>
-      </SlideIntro>
-      <ComparisonTable
+      <SlideLead>
+        <SlideIntro>
+          <HeadingBlock gradient>
+            Closing the promise–delivery gap
+          </HeadingBlock>
+        </SlideIntro>
+      </SlideLead>
+      <SlideBody>
+        <ComparisonTable
         rows={[
           {
             label: "Sample tracking",
@@ -36,7 +41,8 @@ export function BusinessModelSlide() {
             after: "Redundant LIMS sync with Smart Report push and proactive 6-hour TAT notifications",
           },
         ]}
-      />
+        />
+      </SlideBody>
     </Slide>
   );
 }

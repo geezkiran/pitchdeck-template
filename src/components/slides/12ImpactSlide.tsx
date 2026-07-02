@@ -16,7 +16,7 @@ function ImpactSpotlight() {
       )}
     >
       <div className="relative z-10 flex min-w-0 max-w-xl flex-col gap-6 md:gap-8">
-        <div className="flex flex-col gap-3 md:gap-4">
+        <div className="flex flex-col gap-2 md:gap-2.5">
           <h2 className="deck-accent-gradient-text text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
             6-hour reports
           </h2>
@@ -25,7 +25,7 @@ function ImpactSpotlight() {
           </p>
         </div>
 
-        <div className="h-px w-full max-w-sm bg-black/[0.08]" />
+        <div className="mt-4 h-px w-full max-w-sm bg-black/[0.08] md:mt-6" />
 
         <div className="flex flex-col gap-1">
           <p className="text-sm font-medium text-muted md:text-base">Up to</p>

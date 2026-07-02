@@ -2,15 +2,17 @@ import {
   CTABlock,
   HeadingBlock,
   Slide,
+  SlideBody,
+  SlideLead,
   TextBlock,
 } from "@/components/shared";
 
 export function TitleSlide() {
   return (
     <Slide id="title" variant="gradient">
-      <div className="flex w-full flex-col items-start gap-6 md:gap-8">
+      <SlideLead className="w-full items-start">
         <HeadingBlock as="h1" size="xl" gradient>
-          Aarthi Scan & Labs Case Study
+          Aarthi Scan & Labs 
         </HeadingBlock>
         <TextBlock size="md">
           <span className="text-muted">
@@ -25,14 +27,16 @@ export function TitleSlide() {
             — and the operational friction patients experience today.
           </span>
         </TextBlock>
+      </SlideLead>
+      <SlideBody>
         <CTABlock
           primaryLabel="Schedule a meeting with us"
           primaryHref="mailto:santosh@twospoon.ai"
           primaryVariant="gradient"
           secondaryLabel="View proposal"
-          secondaryHref="#roadmap"
+          secondaryHref="#proposed-changes"
         />
-      </div>
+      </SlideBody>
     </Slide>
   );
 }

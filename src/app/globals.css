@@ -73,9 +73,127 @@ body {
   filter: hue-rotate(82deg) saturate(1.75) brightness(0.94) contrast(1.1);
 }
 
+.deck-survey-bar-segment {
+  transform: scaleY(0);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition: transform 0.55s var(--ease-apple);
+  transition-delay: var(--segment-delay, 0ms);
+  will-change: transform;
+}
+
+.deck-survey-bar-label,
+.deck-survey-bar-axis-label,
+.deck-survey-chart-tick,
+.deck-survey-chart-axis,
+.deck-survey-chart-legend {
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-apple-soft);
+}
+
+.deck-survey-bar-label,
+.deck-survey-bar-axis-label {
+  transition-delay: calc(var(--segment-delay, 0ms) + 280ms);
+}
+
+.deck-survey-chart-grid line,
+.deck-survey-chart-axis {
+  transition-delay: 40ms;
+}
+
+.deck-survey-chart-legend {
+  transition-delay: var(--legend-delay, 900ms);
+}
+
+[data-slide].is-active .deck-survey-bar-segment {
+  transform: scaleY(1);
+}
+
+.deck-survey-hbar-segment {
+  transform: scaleX(0);
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+  transition: transform 0.5s var(--ease-apple);
+  transition-delay: var(--segment-delay, 0ms);
+  will-change: transform;
+}
+
+.deck-survey-row-label {
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-apple-soft);
+  transition-delay: calc(var(--segment-delay, 0ms) + 120ms);
+}
+
+[data-slide].is-active .deck-survey-hbar-segment {
+  transform: scaleX(1);
+}
+
+[data-slide].is-active .deck-survey-row-label {
+  opacity: 1;
+}
+
+[data-slide].is-active .deck-survey-bar-label,
+[data-slide].is-active .deck-survey-bar-axis-label,
+[data-slide].is-active .deck-survey-chart-tick,
+[data-slide].is-active .deck-survey-chart-grid line,
+[data-slide].is-active .deck-survey-chart-axis,
+[data-slide].is-active .deck-survey-chart-legend {
+  opacity: 1;
+}
+
+.deck-survey-chart-point,
+.deck-survey-chart-point-halo,
+.deck-survey-chart-point-label {
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-apple-soft);
+}
+
+.deck-survey-chart-point,
+.deck-survey-chart-point-halo {
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 0.35s var(--ease-apple-soft),
+    transform 0.55s var(--ease-apple);
+  transition-delay: var(--point-delay, 0ms);
+}
+
+.deck-survey-chart-point-label {
+  transition-delay: calc(var(--point-delay, 0ms) + 220ms);
+}
+
+[data-slide].is-active .deck-survey-chart-point,
+[data-slide].is-active .deck-survey-chart-point-halo {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-slide].is-active .deck-survey-chart-point-label {
+  opacity: 1;
+}
+
 .deck-curve-line,
 .deck-gauge-arc {
   will-change: stroke-dashoffset;
+}
+
+.deck-sketch-region-stroke {
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-apple-soft) 180ms;
+}
+
+[data-slide].is-active .deck-sketch-region-stroke {
+  opacity: 1;
+}
+
+.deck-sketch-region-fill {
+  opacity: 0;
+  transition: opacity 0.65s var(--ease-apple-soft) var(--sketch-fill-delay, 900ms);
+}
+
+[data-slide].is-active .deck-sketch-region-fill {
+  opacity: 1;
 }
 
 .deck-chart-annotation-clip {
@@ -339,7 +457,21 @@ body {
   .deck-scroll-hint-label,
   .deck-scroll-hint-chevron,
   .deck-chart-label,
-  .deck-chart-annotation-label {
+  .deck-chart-annotation-label,
+  .deck-survey-bar-segment,
+  .deck-survey-hbar-segment,
+  .deck-survey-row-label,
+  .deck-survey-bar-label,
+  .deck-survey-bar-axis-label,
+  .deck-survey-chart-tick,
+  .deck-survey-chart-grid line,
+  .deck-survey-chart-axis,
+  .deck-survey-chart-legend,
+  .deck-survey-chart-point,
+  .deck-survey-chart-point-halo,
+  .deck-survey-chart-point-label,
+  .deck-sketch-region-fill,
+  .deck-sketch-region-stroke {
     animation: none !important;
     transition: none !important;
   }
@@ -347,7 +479,21 @@ body {
   [data-slide] .slide-content,
   [data-slide].is-active .slide-content,
   .deck-chart-label,
-  .deck-chart-annotation-label {
+  .deck-chart-annotation-label,
+  .deck-survey-bar-segment,
+  .deck-survey-hbar-segment,
+  .deck-survey-row-label,
+  .deck-survey-bar-label,
+  .deck-survey-bar-axis-label,
+  .deck-survey-chart-tick,
+  .deck-survey-chart-grid line,
+  .deck-survey-chart-axis,
+  .deck-survey-chart-legend,
+  .deck-survey-chart-point,
+  .deck-survey-chart-point-halo,
+  .deck-survey-chart-point-label,
+  .deck-sketch-region-fill,
+  .deck-sketch-region-stroke {
     opacity: 1;
     transform: none;
   }
