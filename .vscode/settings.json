@@ -1,9 +1,13 @@
 {
   "css.customData": [".vscode/css_custom_data.json"],
   "css.lint.unknownAtRules": "ignore",
-  "terminal.integrated.enableBell": false,
   "accessibility.signalOptions.volume": 0,
-  "accessibility.signals.terminalBell": { "sound": "off" },
+  "accessibility.signals.terminalBell": {
+    "sound": "off"
+  },
   "accessibility.signals.terminalCommandFailed": { "sound": "off" },
-  "accessibility.signals.terminalCommandSucceeded": { "sound": "off" }
+  "accessibility.signals.terminalCommandSucceeded": {
+    "sound": "off"
+  },
+  "terminal.integrated.enableVisualBell": false
 }

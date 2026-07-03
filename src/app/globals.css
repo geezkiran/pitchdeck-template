@@ -196,6 +196,20 @@ body {
   opacity: 1;
 }
 
+.deck-landscape-bubble {
+  opacity: 0;
+  transform: scale(0.88);
+  transition:
+    opacity 0.45s var(--ease-apple-soft),
+    transform 0.55s var(--ease-apple);
+  transition-delay: var(--bubble-delay, 0ms);
+}
+
+[data-slide].is-active .deck-landscape-bubble {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .deck-chart-annotation-clip {
   will-change: transform;
 }
@@ -471,7 +485,8 @@ body {
   .deck-survey-chart-point-halo,
   .deck-survey-chart-point-label,
   .deck-sketch-region-fill,
-  .deck-sketch-region-stroke {
+  .deck-sketch-region-stroke,
+  .deck-landscape-bubble {
     animation: none !important;
     transition: none !important;
   }
@@ -493,7 +508,8 @@ body {
   .deck-survey-chart-point-halo,
   .deck-survey-chart-point-label,
   .deck-sketch-region-fill,
-  .deck-sketch-region-stroke {
+  .deck-sketch-region-stroke,
+  .deck-landscape-bubble {
     opacity: 1;
     transform: none;
   }
