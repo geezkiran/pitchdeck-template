@@ -2,22 +2,24 @@ import { AboutSlide } from "./02AboutSlide";
 import { CompetitiveSlide } from "./03CompetitiveSlide";
 import { IndustryDirectionSlide } from "./04IndustryDirectionSlide";
 import { SolutionSlide } from "./05SolutionSlide";
-import { TeamSlide } from "./11TeamSlide";
+import { CompetitionAlreadySlide } from "./06CompetitionAlreadySlide";
+import { BusinessModelSlide } from "./09BusinessModelSlide";
 import { ImpactSlide } from "./12ImpactSlide";
 import { PerformanceSlide } from "./13PerformanceSlide";
 import { AskSlide } from "./14AskSlide";
 import { TitleSlide } from "./01TitleSlide";
 
-/** Narrative: introduction → about → current market → future market → loose ends → solution → expected results → ask */
+/** Narrative: introduction → about → current market → future market → loose ends → competition → solution → expected results → ask */
 export const slideSections = [
   { label: "Introduction", slides: [0] },
   { label: "About", slides: [1] },
   { label: "Current market", slides: [2] },
   { label: "Future market", slides: [3] },
   { label: "Loose ends", slides: [4] },
-  { label: "Solution", slides: [5] },
-  { label: "Expected results", slides: [6, 7] },
-  { label: "The ask", slides: [8] },
+  { label: "Competition", slides: [5] },
+  { label: "Solution", slides: [6] },
+  { label: "Expected results", slides: [7, 8] },
+  { label: "The ask", slides: [9] },
 ] as const;
 
 export const slideLabels = [
@@ -26,6 +28,7 @@ export const slideLabels = [
   "Current Market",
   "Future Market",
   "Future Readiness",
+  "Competition",
   "Key Initiatives",
   "Impact",
   "Performance",
@@ -38,7 +41,8 @@ export const slides = [
   CompetitiveSlide,
   IndustryDirectionSlide,
   SolutionSlide,
-  TeamSlide,
+  CompetitionAlreadySlide,
+  BusinessModelSlide,
   ImpactSlide,
   PerformanceSlide,
   AskSlide,

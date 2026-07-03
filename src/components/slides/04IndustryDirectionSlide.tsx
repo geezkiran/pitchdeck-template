@@ -112,20 +112,12 @@ const technologyRows: SurveyBar<LikelihoodKey>[] = [
     values: { highlyLikely: 40, somewhatLikely: 49, unlikely: 11 },
   },
   {
-    label: "Nanotechnology",
-    values: { highlyLikely: 36, somewhatLikely: 48, unlikely: 16 },
-  },
-  {
     label: "VR / AR",
     values: { highlyLikely: 35, somewhatLikely: 56, unlikely: 10 },
   },
   {
     label: "Quantum computing",
     values: { highlyLikely: 26, somewhatLikely: 49, unlikely: 25 },
-  },
-  {
-    label: "Digital twins",
-    values: { highlyLikely: 23, somewhatLikely: 56, unlikely: 20 },
   },
 ];
 
@@ -156,11 +148,29 @@ const TECH_CHART = {
     top: Math.round(8 * CHART_SCALE),
     right: Math.round(12 * CHART_SCALE),
     bottom: Math.round(32 * CHART_SCALE),
-    left: Math.round(96 * CHART_SCALE),
+    left: Math.round(132 * CHART_SCALE),
   },
   barHeight: Math.round(19 * CHART_SCALE),
   rowGap: Math.round(11 * CHART_SCALE),
+  designRowCount: 7,
 } as const;
+
+function getTechRowLayout(rowCount: number) {
+  const plotHeight =
+    TECH_CHART.height - TECH_CHART.margin.top - TECH_CHART.margin.bottom;
+  const baseStackHeight =
+    TECH_CHART.designRowCount * TECH_CHART.barHeight +
+    (TECH_CHART.designRowCount - 1) * TECH_CHART.rowGap;
+  const currentStackHeight =
+    rowCount * TECH_CHART.barHeight + (rowCount - 1) * TECH_CHART.rowGap;
+  const scale = baseStackHeight / currentStackHeight;
+
+  return {
+    barHeight: Math.round(TECH_CHART.barHeight * scale),
+    rowGap: Math.round(TECH_CHART.rowGap * scale),
+    plotHeight,
+  };
+}
 
 const SEGMENT_STAGGER_MS = 100;
 const BAR_GAP_MS = 280;
@@ -385,6 +395,7 @@ function TechnologyAdoptionChart() {
   const plotRight = TECH_CHART.width - TECH_CHART.margin.right;
   const plotBottom = TECH_CHART.height - TECH_CHART.margin.bottom;
   const plotWidth = plotRight - plotLeft;
+  const { barHeight, rowGap } = getTechRowLayout(technologyRows.length);
 
   const scaleX = (value: number) => plotLeft + (value / 100) * plotWidth;
   const xTicks = [0, 20, 40, 60, 80, 100];
@@ -424,8 +435,7 @@ function TechnologyAdoptionChart() {
         })}
 
         {technologyRows.map((row, rowIndex) => {
-          const rowY =
-            plotTop + rowIndex * (TECH_CHART.barHeight + TECH_CHART.rowGap);
+          const rowY = plotTop + rowIndex * (barHeight + rowGap);
           const rowTotal = getRowTotal(row.values);
           let cumulative = 0;
           const rowLabelDelay = getTechSegmentDelay(rowIndex, 0);
@@ -433,8 +443,8 @@ function TechnologyAdoptionChart() {
           return (
             <g key={row.label}>
               <text
-                x={plotLeft - 6}
-                y={rowY + TECH_CHART.barHeight / 2 + 3}
+                x={plotLeft - 10}
+                y={rowY + barHeight / 2 + 3}
                 textAnchor="end"
                 className="deck-survey-row-label fill-foreground text-[10px] font-medium md:text-[11px]"
                 style={
@@ -465,7 +475,7 @@ function TechnologyAdoptionChart() {
                       x={segmentLeft}
                       y={rowY}
                       width={renderedWidth}
-                      height={TECH_CHART.barHeight}
+                      height={barHeight}
                       fill={segment.color}
                       className="deck-survey-hbar-segment"
                       style={
@@ -475,7 +485,7 @@ function TechnologyAdoptionChart() {
                     {showLabel && (
                       <text
                         x={segmentLeft + renderedWidth / 2}
-                        y={rowY + TECH_CHART.barHeight / 2 + 3}
+                        y={rowY + barHeight / 2 + 3}
                         textAnchor="middle"
                         className="deck-survey-bar-label text-[8.5px] font-semibold md:text-[10px]"
                         fill={segment.textColor}
@@ -546,7 +556,7 @@ export function IndustryDirectionSlide() {
     <Slide id="industry-direction">
       <SlideLead>
         <SlideIntro>
-          <HeadingBlock>The Future of Diagnostic Labs</HeadingBlock>
+          <HeadingBlock size="xl">The Future </HeadingBlock>
         </SlideIntro>
         <TextBlock size="sm">
  Labs that invest in home collection networks, adopt scalable LIMS infrastructure, and serve the remote towns of Bharat before their competitors do will lead the growth.

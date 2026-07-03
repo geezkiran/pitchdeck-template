@@ -25,7 +25,7 @@ const columns: MetricColumn[] = [
   },
   {
     id: "telemedicine",
-    text: "India's telemedicine market is projected to grow ~5×, reaching US$15.1 billion by 2030 reflecting a Compound Annual Growth Rate (CAGR) of approximately 21%",
+    text: "India's telemedicine market is projected to grow ~5×, reaching US$15.1 billion by 2030 reflecting a Compound Annual Growth Rate (CAGR) of approximately 21%.",
     tagline: "Growth",
     value: "5x",
   },

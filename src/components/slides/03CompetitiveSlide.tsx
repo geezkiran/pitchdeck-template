@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { HeadingBlock, Slide, SlideBody, SlideLead } from "@/components/shared";
+import { HeadingBlock, Slide, SlideBody } from "@/components/shared";
 
 type CompareCell = string;
 
@@ -22,7 +22,7 @@ const brands: CompareBrand[] = [
   { id: "aarthi", name: "Aarthi Scan & Labs", shortName: "Aarthi Scans", featured: true },
   { id: "orange", name: "Orange Health Labs", shortName: "Orange Health Labs" },
   { id: "lal", name: "Dr. Lal PathLabs", shortName: "Dr. Lal PathLabs" },
-  { id: "metropolis", name: "Metropolis Healthcare", shortName: "Metropolis Healthcare" },
+  { id: "metropolis", name: "Metropolis Healthcare", shortName: "Metropolis" },
 ];
 
 const compareRows: CompareRow[] = [
@@ -203,9 +203,6 @@ export function CompetitiveSlide() {
         </p>
       }
     >
-      <SlideLead>
-        <HeadingBlock size="lg">Current Market Landscape</HeadingBlock>
-      </SlideLead>
       <SlideBody className="mt-0">
         <DiagnosticCompareTable />
       </SlideBody>
