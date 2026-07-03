@@ -76,7 +76,7 @@ export function SolutionSlide() {
     >
       <div className="flex min-h-0 w-full flex-1 flex-col">
         <HeadingBlock size="xl" className="max-w-[44rem] text-left">
-          Patient acquisition and retention
+          Customer acquisition and retention
         </HeadingBlock>
 
         <div className="mt-auto grid w-full flex-1 grid-cols-1 gap-10 pt-14 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4 lg:gap-x-0 lg:pt-20">

@@ -5,20 +5,20 @@ import { cn } from "@/lib/utils";
 import { Slide } from "@/components/shared";
 
 function ImpactSpotlight() {
-  const imageSrc = "/images/iphone-17-pro-deep-blue-portrait.png";
-  const imageMaxHeight = "min(calc(100dvh - 11rem), 640px)";
+  const imageSrc = "/images/Aarthiscan.png";
+  const imageMaxHeight = "min(calc(100dvh - 6rem), 897px)";
 
   return (
     <div
       className={cn(
-        "deck-spotlight-sync relative w-full min-w-0",
-        "grid grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,38%)] md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,42%)] lg:gap-14"
+        "deck-spotlight-sync relative w-full min-w-0 overflow-visible",
+        "grid grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,46%)] md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,52%)] lg:gap-14"
       )}
     >
       <div className="relative z-10 flex min-w-0 max-w-xl flex-col gap-6 md:gap-8">
         <div className="flex flex-col gap-2 md:gap-2.5">
           <h2 className="deck-accent-gradient-text text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
-            6-hour reports
+            4 step 
           </h2>
           <p className="max-w-md text-base leading-relaxed text-muted md:text-lg">
             Proposed digital workflow across booking, lab operations, and patient delivery.
@@ -39,16 +39,16 @@ function ImpactSpotlight() {
       </div>
 
       <div
-        className="relative hidden min-h-0 min-w-0 items-center justify-end md:flex"
+        className="relative hidden min-h-0 min-w-0 items-center justify-end overflow-visible md:flex"
         aria-hidden
       >
         <Image
           src={imageSrc}
-          alt="iPhone displaying patient reports"
-          width={1350}
-          height={2760}
+          alt="Aarthi Scan app displaying patient reports"
+          width={439}
+          height={897}
           priority
-          className="h-auto w-auto max-w-full object-contain"
+          className="h-auto w-auto origin-right scale-[1.6] object-contain lg:translate-y-[40%] xl:translate-y-0"
           style={{ maxHeight: imageMaxHeight }}
         />
       </div>
@@ -60,6 +60,7 @@ export function ImpactSlide() {
   return (
     <Slide
       id="impact"
+      className="overflow-visible"
       footer={
         <p className="text-left text-[10px] leading-snug text-muted/70 md:text-[11px]">
           Image shown is a prototype and is subject to changes in the production-ready application.

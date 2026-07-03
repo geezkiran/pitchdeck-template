@@ -546,11 +546,10 @@ export function IndustryDirectionSlide() {
     <Slide id="industry-direction">
       <SlideLead>
         <SlideIntro>
-          <HeadingBlock>Where diagnostics is heading</HeadingBlock>
+          <HeadingBlock>The Future of Diagnostic Labs</HeadingBlock>
         </SlideIntro>
         <TextBlock size="sm">
-          Disruptive technologies will transform diagnostics over the next five
-          to ten years.
+ Labs that invest in home collection networks, adopt scalable LIMS infrastructure, and serve the remote towns of Bharat before their competitors do will lead the growth.
         </TextBlock>
       </SlideLead>
       <SlideBody>
