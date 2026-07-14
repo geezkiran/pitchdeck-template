@@ -69,11 +69,11 @@ function DetailOverlay({
           type="button"
           aria-label="Close"
           onClick={onClose}
-          className="absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border border-black/[0.12] bg-background text-muted transition-colors hover:border-black/20 hover:text-foreground"
+          className="absolute top-4 right-4 flex h-12 w-12 items-center justify-center rounded-full border border-black/[0.12] bg-background text-muted transition-colors hover:border-black/20 hover:text-foreground"
         >
           <svg
             viewBox="0 0 24 24"
-            className="h-4 w-4"
+            className="h-5 w-5"
             fill="none"
             stroke="currentColor"
             strokeWidth={2}

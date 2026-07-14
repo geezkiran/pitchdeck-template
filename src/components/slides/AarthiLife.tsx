@@ -12,20 +12,17 @@ export function TitleSlide() {
     <Slide id="title" variant="gradient">
       <SlideLead className="w-full items-start">
         <HeadingBlock as="h1" size="xl" gradient>
-          Aarthi Scan & Labs 
+          AarthiLife
         </HeadingBlock>
         <TextBlock size="md">
           <span className="text-muted">
             {" "}
-            A phased plan to close the gap between Aarthi Lab&apos;s promise —{" "}
+            Turning Aarthi’s diagnostic network into a recurring 
           </span>
           <span className="text-foreground">
-            200+ centres, 6-hour reports, 60% scan savings
+            <br /> consumer-health business
           </span>
-          <span className="text-muted">
-            {" "}
-            — and the operational friction patients experience today.
-          </span>
+          
         </TextBlock>
       </SlideLead>
       <SlideBody>

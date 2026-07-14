@@ -9,7 +9,7 @@ interface TextBlockProps extends BlockProps {
 
 const sizeStyles = {
   lg: "text-xl font-medium leading-[1.5] tracking-[-0.01em] sm:text-2xl md:text-[1.625rem]",
-  md: "text-lg font-medium leading-[1.55] tracking-[-0.008em] sm:text-xl md:text-[1.375rem]",
+  md: "text-lg font-medium leading-[1.4] tracking-[-0.008em] sm:text-xl md:text-[1.375rem]",
   sm: "text-base font-medium leading-relaxed sm:text-lg",
 };
 

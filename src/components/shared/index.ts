@@ -10,3 +10,6 @@ export { StatGrid, StatGridGroup } from "./StatGrid";
 export { ComparisonTable } from "./ComparisonTable";
 export { Icon3D } from "./Icon3D";
 export type { Icon3DVariant } from "./Icon3D";
+export { StepFlow, CircularStepFlow } from "./StepFlow";
+export { BentoGrid } from "./BentoGrid";
+export type { BentoCardItem } from "./BentoGrid";

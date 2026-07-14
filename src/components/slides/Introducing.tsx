@@ -8,7 +8,8 @@ export function CompetitionAlreadySlide() {
       contentClassName="items-center justify-center"
     >
       <HeadingBlock size="xl" gradient className="max-w-4xl text-center">
-        Your competition is already doing it
+        Introducing AarthiLife
+        
       </HeadingBlock>
     </Slide>
   );

@@ -15,11 +15,9 @@ import {
 
 interface Pillar {
   id: string;
-  eyebrow: string;
   title: string;
   shortLabel: string;
   before: string;
-  after?: string;
   icon: Icon3DVariant;
   imageSrc?: string;
   arcs: [string, string, string];
@@ -27,56 +25,46 @@ interface Pillar {
 
 const pillars: Pillar[] = [
   {
-    id: "scheduling",
-    eyebrow: "Capacity sync",
-    title: "Appointment Scheduling",
-    shortLabel: "Scheduling",
+    id: "personalisation",
+    title: "Digital personalisation",
+    shortLabel: "Personalisation",
     before:
-      "Simplified online appointment scheduling via WhatsApp.",
-    
-    icon: "tools",
-    imageSrc: "/images/scheduling-calendar.png",
-    arcs: ["#4285f4", "#ea4335", "#fbbc04"],
-  },
-  {
-    id: "identity",
-    eyebrow: "Digital ID",
-    title: "Unified digital Identity",
-    shortLabel: "Patient ID",
-    before:
-      "Unified digital ID across app, WhatsApp, and all 200+ centre front desks.",
-    
+      "Use previous reports, age, gender, risk profile and family history to make the experience relevant.",
     icon: "memory",
     imageSrc: "/images/patient-identity-folder.png",
     arcs: ["#a142f4", "#4285f4", "#34a853"],
   },
   {
-    id: "tracking",
-    eyebrow: "Chain of custody",
-    title: "Sample tracking",
-    shortLabel: "Sample tracking",
+    id: "repeat",
+    title: "Repeat behaviour",
+    shortLabel: "Repeat behaviour",
     before:
-      "Smart Report shows results — but no chain-of-custody from home collection to lab.",
-   
+      "Remind customers when an annual or clinically appropriate follow-up check is due.",
+    icon: "tools",
+    imageSrc: "/images/scheduling-calendar.png",
+    arcs: ["#4285f4", "#ea4335", "#fbbc04"],
+  },
+  {
+    id: "packages",
+    title: "Higher-value packages",
+    shortLabel: "Higher value",
+    before:
+      "Move customers from basic screening toward deeper packages when their health context justifies it.",
     icon: "orchestration",
     imageSrc: "/images/sample-tracking-pin.png",
     arcs: ["#4285f4", "#34a853", "#fbbc04"],
   },
   {
-    id: "delivery",
-    eyebrow: "Smart delivery",
-    title: "Report delivery",
-    shortLabel: "Report delivery",
+    id: "margin",
+    title: "Margin accretion",
+    shortLabel: "Margin accretion",
     before:
-      "WhatsApp delivery exists but API failures leave validated reports stuck as Pending.",
-    
+      "Increase tests and revenue per customer while leveraging the existing laboratory, centre and home-collection infrastructure.",
     icon: "guardrails",
     imageSrc: "/images/report-delivery-book.png",
     arcs: ["#34a853", "#4285f4", "#ea4335"],
   },
 ];
-
-
 
 function getCardFlexClass(index: number, activeIndex: number, expanded: boolean) {
   if (expanded) return "z-10 flex-[1.65]";
@@ -165,13 +153,11 @@ function PillarCard({
         )}
       >
         <PillarGraphic pillar={pillar} expanded={expanded} />
-        
         <h3 className="mt-2 text-[1.625rem] font-semibold leading-tight tracking-[-0.02em] text-primary md:text-[1.975rem]">
           {pillar.title}
         </h3>
-        <div className="mt-4 min-h-0 space-y-3 overflow-y-auto text-sm leading-relaxed md:mt-5 md:text-[0.9375rem]">
+        <div className="mt-4 min-h-0 overflow-y-auto text-sm leading-relaxed md:mt-5 md:text-[0.9375rem]">
           <p className="text-muted">{pillar.before}</p>
-          
         </div>
       </div>
 
@@ -201,7 +187,7 @@ function PillarCardRow() {
     <div
       className="flex h-[min(56dvh,420px)] w-full min-w-0 gap-2 overflow-visible md:h-[min(58dvh,440px)] md:gap-3"
       role="list"
-      aria-label="Proposed operational pillars"
+      aria-label="Growth flywheel pillars"
     >
       {pillars.map((pillar, index) => (
         <PillarCard
@@ -227,7 +213,7 @@ export function BusinessModelSlide() {
       <SlideLead>
         <SlideIntro>
           <HeadingBlock gradient size="xl">
-            The Digital Door 
+            The growth flywheel
           </HeadingBlock>
         </SlideIntro>
       </SlideLead>
