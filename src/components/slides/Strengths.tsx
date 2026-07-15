@@ -18,7 +18,7 @@ export function StrengthsSlide() {
         <SlideLead className="max-w-5xl">
          
           <HeadingBlock size="xl" className="text-foreground">
-            A diagnostic network built to scale.
+            Where Aarthi Labs Stands Today
           </HeadingBlock>
         </SlideLead>
 
