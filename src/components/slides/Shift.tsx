@@ -5,10 +5,22 @@ import { HeadingBlock, Slide, SlideLead } from "@/components/shared";
 import { cn } from "@/lib/utils";
 
 const QUESTIONS = [
-  { q: "Where am I?", a: "A personalised health baseline" },
-  { q: "What changed?", a: "Progress since your last visit" },
-  { q: "What's next?", a: "Guided follow-ups & family care" },
-  { q: "What's relevant?", a: "Aarthi services, surfaced at the right moment" },
+  {
+    q: "Where am I?",
+    a: "A personalised health baseline, built the moment a patient walks in — vitals, labs, and history unified into one clear starting point, with risk factors and trends flagged early instead of buried in old reports, so the patient, the doctor, and the wider care team are all working from the same shared view.",
+  },
+  {
+    q: "What changed?",
+    a: "Progress since your last visit, laid out as a clear before-and-after — the readings that improved, the ones that still need attention, and the trend line behind each, so patients see momentum instead of a disconnected snapshot each time they return.",
+  },
+  {
+    q: "What's next?",
+    a: "Guided follow-ups & family care, with the next test, consult, or screening surfaced automatically based on what was found this visit, and the same guidance extended to spouses, parents, and children so the whole family stays on a proactive care rhythm rather than reacting to problems.",
+  },
+  {
+    q: "What's relevant?",
+    a: "Aarthi services, surfaced at the right moment — the specific diagnostic, specialist, or programme that fits a patient's current results and history, recommended when it's actually useful rather than pushed as a generic upsell.",
+  },
 ];
 
 function ChevronIcon({ open }: { open: boolean }) {

@@ -12,7 +12,7 @@ export function AppIntroSlide3() {
         </SlideLead>
         <div className="relative aspect-[9/19] w-72 shrink-0">
           <Image
-            src="/images/app-screenshot-3.png"
+            src="/images/tracking.png"
             alt="AarthiLife app"
             fill
             className="object-contain"
