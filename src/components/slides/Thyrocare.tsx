@@ -1,11 +1,11 @@
-import { HeadingBlock, Slide, SlideBody } from "@/components/shared";
+import { HeadingBlock, ProgressGaugeCard, Slide, SlideBody } from "@/components/shared";
 
 export function ThyrocareSlide() {
   return (
     <Slide
       id="thyrocare"
-      className="pt-20 md:pt-16"
-      contentClassName="gap-6 md:gap-8"
+      className="pt-16"
+      contentClassName="gap-14 md:gap-20"
       centerContent={false}
     >
       <SlideBody className="mt-0">
@@ -34,10 +34,63 @@ export function ThyrocareSlide() {
         </div>
       </SlideBody>
 
-      <div className="grid h-64 md:h-80 grid-cols-3 gap-3 md:gap-4 mt-14 md:mt-20">
-        <div className="min-h-0 min-w-0 rounded-[16px] bg-gray-400/[0.05]" />
-        <div className="min-h-0 min-w-0 rounded-[16px] bg-gray-400/[0.05]" />
-        <div className="min-h-0 min-w-0 rounded-[16px] bg-gray-400/[0.05]" />
+      <div className="grid h-80 grid-cols-3 gap-4">
+        <ProgressGaugeCard
+          value={33}
+          status="Share of overall business mix"
+          detail="Aarogyam"
+          actionLabel="View details"
+          sketchDelay={0}
+          reportDetails={{
+            title: "Aarogyam — share of business mix",
+            description:
+              "Thyrocare reported Aarogyam at approximately 33% of its overall business mix.",
+            metrics: [
+              { label: "Share of business mix", value: "~33%" },
+              { label: "YoY growth", value: "~19–20%" },
+            ],
+            bullets: [
+              "Bundling more relevant tests into each customer visit creates operating leverage.",
+              "Once a sample tube is being processed, running additional tests consumes only marginal additional laboratory capacity.",
+            ],
+          }}
+        />
+        <ProgressGaugeCard
+          value={20}
+          status="Aarogyam growth"
+          detail="~19–20% YoY"
+          actionLabel="View details"
+          sketchDelay={200}
+          reportDetails={{
+            title: "Aarogyam — year-over-year growth",
+            description: "Thyrocare reported Aarogyam growing approximately 19–20% year over year.",
+            metrics: [
+              { label: "Aarogyam growth", value: "~19–20% YoY" },
+              { label: "Share of business mix", value: "~33%" },
+              { label: "Tests per patient", value: "~11" },
+            ],
+          }}
+        />
+        <ProgressGaugeCard
+          value={66}
+          status="Jaanch growth"
+          detail="~2% of revenue, YoY"
+          actionLabel="View details"
+          sketchDelay={400}
+          reportDetails={{
+            title: "Jaanch — year-over-year growth",
+            description:
+              "Jaanch is only around 2% of revenue today but is growing 66% year over year.",
+            metrics: [
+              { label: "Jaanch growth", value: "+66% YoY" },
+              { label: "Share of revenue", value: "~2%" },
+              { label: "Tests per patient", value: "~11" },
+            ],
+            bullets: [
+              "More relevant tests per customer can increase revenue without requiring a proportional increase in laboratory capacity.",
+            ],
+          }}
+        />
       </div>
     </Slide>
   );

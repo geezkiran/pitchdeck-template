@@ -35,17 +35,17 @@ export function ShiftSlide() {
 
   return (
     <Slide id="shift" variant="gradient" contentClassName="justify-center">
-      <div className="flex flex-col gap-8 md:gap-10">
+      <div className="flex flex-col gap-10">
         <SlideLead className="max-w-5xl">
           <HeadingBlock
             size="xl"
-            className="text-foreground lg:text-[4.1875rem] lg:leading-[0.98]"
+            className="text-foreground text-[4.1875rem] leading-[0.98]"
           >
             A patient-first experience,<br /> organised around four questions.
           </HeadingBlock>
         </SlideLead>
 
-        <div className="flex flex-col gap-3 md:gap-4">
+        <div className="flex flex-col gap-4">
           {QUESTIONS.map(({ q, a }, i) => {
             const open = openIndex === i;
             return (
@@ -60,9 +60,9 @@ export function ShiftSlide() {
                   type="button"
                   onClick={() => setOpenIndex(open ? -1 : i)}
                   aria-expanded={open}
-                  className="flex w-full items-center gap-3 px-6 py-4 text-left md:px-7 md:py-5"
+                  className="flex w-full items-center gap-3 px-7 py-5 text-left"
                 >
-                  <span className="flex-1 text-2xl font-semibold tracking-[-0.02em] text-foreground md:text-[1.75rem]">
+                  <span className="flex-1 text-[1.75rem] font-semibold tracking-[-0.02em] text-foreground">
                     {q}
                   </span>
                   <ChevronIcon open={open} />
@@ -74,7 +74,7 @@ export function ShiftSlide() {
                   )}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-6 pb-4 text-base font-medium leading-snug text-muted md:px-7 md:pb-5 md:text-lg">
+                    <p className="px-7 pb-5 text-lg font-medium leading-snug text-muted">
                       {a}
                     </p>
                   </div>

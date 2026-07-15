@@ -10,9 +10,9 @@ export function StatementSlide() {
       <HeadingBlock
         size="xl"
         gradient
-        className="max-w-8xl text-center text-[2.0625rem] leading-[1.15] sm:text-[2.8125rem] md:text-[3.5625rem] lg:text-[4.3125rem]"
+        className="max-w-8xl text-center text-[4.3125rem] leading-[1.15]"
       >
-        Diagnostics is becoming more than <br />{" "}
+        Diagnostics is becoming more than{" "}
         <span className="mx-1 inline-flex items-center gap-2 rounded-full border border-accent/40 px-3 align-middle leading-none text-accent">
           <svg
             xmlns="http://www.w3.org/2000/svg"

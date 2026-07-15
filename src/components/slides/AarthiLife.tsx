@@ -15,11 +15,11 @@ export function TitleSlide() {
           as="h1"
           size="xl"
           gradient
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-[6rem]"
+          className="text-[6rem]"
         >
           AarthiLife
         </HeadingBlock>
-        <TextBlock size="md">
+        <TextBlock size="lg" className="leading-tight">
           <span className="text-muted">
             {" "}
             Turning Aarthi’s diagnostic network into a recurring 
@@ -36,7 +36,7 @@ export function TitleSlide() {
           primaryHref="mailto:santosh@twospoon.ai"
           primaryVariant="gradient"
           secondaryLabel="View proposal"
-          secondaryHref="#proposed-changes"
+          secondaryHref="#competition-already"
         />
       </SlideBody>
     </Slide>

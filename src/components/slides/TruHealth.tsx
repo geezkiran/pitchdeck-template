@@ -1,11 +1,11 @@
-import { HeadingBlock, Slide, SlideBody } from "@/components/shared";
+import { HeadingBlock, ProgressGaugeCard, Slide, SlideBody } from "@/components/shared";
 
 export function CompetitiveSlide() {
   return (
     <Slide
       id="competitive-landscape"
-      className="pt-20 md:pt-16"
-      contentClassName="gap-6 md:gap-8"
+      className="pt-16"
+      contentClassName="gap-14 md:gap-20"
       centerContent={false}
     >
       <SlideBody className="mt-0">
@@ -34,22 +34,72 @@ export function CompetitiveSlide() {
         </div>
       </SlideBody>
 
-      <div className="grid h-64 md:h-80 grid-cols-3 gap-3 md:gap-4 mt-14 md:mt-20">
-        <div className="flex min-h-0 min-w-0 flex-col justify-center gap-6 rounded-[16px] bg-gray-400/[0.05] p-5 md:p-6">
-          <div>
-            <p className="text-5xl font-bold tracking-tight text-foreground md:text-6xl">
-              <span className="font-semibold">+</span>23%
-            </p>
-            <p className="mt-1 text-sm font-medium text-muted md:text-base">
-              TruHealth revenue growth YoY. <br />Revenue contribution increasing from 14% to 16%
-            </p>
-          </div>
-          
-            
-          
-        </div>
-        <div className="min-h-0 min-w-0 rounded-[16px] bg-gray-400/[0.05]" />
-        <div className="min-h-0 min-w-0 rounded-[16px] bg-gray-400/[0.05]" />
+      <div className="grid h-80 grid-cols-3 gap-4">
+        <ProgressGaugeCard
+          value={23}
+          status="TruHealth revenue growth"
+          detail="YoY, Q2 FY25"
+          actionLabel="View details"
+          sketchDelay={0}
+          reportDetails={{
+            title: "TruHealth — revenue growth",
+            description:
+              "Metropolis reported TruHealth revenue growth of 23% year over year in Q2 FY25.",
+            metrics: [
+              { label: "Revenue growth", value: "+23% YoY" },
+              { label: "Revenue contribution", value: "14% → 16%" },
+            ],
+            bullets: [
+              "Strong digital interventions and personalised customer-lifecycle journeys.",
+              "“Next Best Action” recommendations based on test results.",
+              "Cross-selling and upselling into higher-end packages.",
+            ],
+          }}
+        />
+        <ProgressGaugeCard
+          value={8}
+          status="Test volume growth"
+          detail="YoY, Q2 FY25"
+          actionLabel="View details"
+          sketchDelay={200}
+          reportDetails={{
+            title: "TruHealth — test volume growth",
+            description:
+              "Metropolis reported TruHealth test volumes increasing 8% year over year in Q2 FY25.",
+            metrics: [
+              { label: "Test volume growth", value: "+8% YoY" },
+              { label: "Revenue per test", value: "+14% YoY" },
+              { label: "Avg. package realisation", value: ">₹2,500" },
+            ],
+            bullets: [
+              "Strong digital interventions and personalised customer-lifecycle journeys.",
+              "“Next Best Action” recommendations based on test results.",
+              "Cross-selling and upselling into higher-end packages.",
+            ],
+          }}
+        />
+        <ProgressGaugeCard
+          value={14}
+          status="Revenue per test growth"
+          detail="YoY, Q2 FY25"
+          actionLabel="View details"
+          sketchDelay={400}
+          reportDetails={{
+            title: "TruHealth — revenue per test",
+            description:
+              "Scientifically tailored, margin-accretive packages lifted revenue per test 14% year over year in Q2 FY25.",
+            metrics: [
+              { label: "Revenue per test growth", value: "+14% YoY" },
+              { label: "Avg. package realisation", value: ">₹2,500" },
+              { label: "Revenue contribution", value: "14% → 16%" },
+            ],
+            bullets: [
+              "Margin-accretive packages with average realisations above ₹2,500.",
+              "Scientifically tailored packages built on test results.",
+              "Cross-selling and upselling into higher-end packages.",
+            ],
+          }}
+        />
       </div>
     </Slide>
   );

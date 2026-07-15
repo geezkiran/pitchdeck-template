@@ -19,7 +19,7 @@ export function AskSlide() {
           </HeadingBlock>
         </SlideIntro>
       </SlideLead>
-      <SlideBody className="flex flex-col gap-7 md:gap-9">
+      <SlideBody className="flex flex-col gap-9">
         <StatGrid
           columns={3}
           stats={[

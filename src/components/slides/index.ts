@@ -4,7 +4,6 @@ import { SwasthFitSlide } from "./SwasthFit";
 import { ThyrocareSlide } from "./Thyrocare";
 import { CompetitionAlreadySlide } from "./Introducing";
 import { BusinessModelSlide } from "./Flywheel";
-import { PerformanceSlide } from "./Performance";
 import { TitleSlide } from "./AarthiLife";
 import { AppIntroSlide } from "./Discover";
 import { AppIntroSlide2 } from "./Booking";
@@ -14,22 +13,20 @@ import { AppIntroSlide5 } from "./Loop";
 import { StatementSlide } from "./Diagnostics";
 import { ProblemSlide } from "./Problem";
 import { StrengthsSlide } from "./Strengths";
-import { SmarterSlide } from "./Smarter";
 import { ShiftSlide } from "./Shift";
 import { RelationshipSlide } from "./Relationship";
 
-/** Narrative: introduction → statement → about → competition → solution → strengths → the shift → introducing → app intro → expected results → relationship */
+/** Narrative: introduction → statement → about → competition → solution → strengths → the shift → introducing → app intro → relationship */
 export const slideSections = [
   { label: "Introduction", slides: [0, 1] },
   { label: "About", slides: [2] },
   { label: "Competition", slides: [3, 4, 5] },
   { label: "Solution", slides: [6] },
   { label: "Strengths", slides: [7] },
-  { label: "The shift", slides: [8, 9, 10] },
-  { label: "Introducing", slides: [11] },
-  { label: "App", slides: [12, 13, 14, 15, 16] },
-  { label: "Expected results", slides: [17] },
-  { label: "Relationship", slides: [18] },
+  { label: "The shift", slides: [8, 9] },
+  { label: "Introducing", slides: [10] },
+  { label: "App", slides: [11, 12, 13, 14, 15] },
+  { label: "Relationship", slides: [16] },
 ] as const;
 
 export const slideLabels = [
@@ -42,7 +39,6 @@ export const slideLabels = [
   "Key Initiatives",
   "Strengths",
   "The Problem",
-  "Smarter",
   "The Shift",
   "Introducing",
   "App 1",
@@ -50,7 +46,6 @@ export const slideLabels = [
   "App 3",
   "App 4",
   "App 5",
-  "Performance",
   "Relationship",
 ];
 
@@ -64,7 +59,6 @@ export const slides = [
   BusinessModelSlide,
   StrengthsSlide,
   ProblemSlide,
-  SmarterSlide,
   ShiftSlide,
   CompetitionAlreadySlide,
   AppIntroSlide,
@@ -72,6 +66,5 @@ export const slides = [
   AppIntroSlide3,
   AppIntroSlide4,
   AppIntroSlide5,
-  PerformanceSlide,
   RelationshipSlide,
 ];

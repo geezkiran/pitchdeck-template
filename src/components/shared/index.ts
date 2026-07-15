@@ -13,3 +13,5 @@ export type { Icon3DVariant } from "./Icon3D";
 export { StepFlow, CircularStepFlow } from "./StepFlow";
 export { BentoGrid } from "./BentoGrid";
 export type { BentoCardItem } from "./BentoGrid";
+export { ProgressGaugeCard } from "./ProgressGaugeCard";
+export type { ProgressGaugeCardProps, ReportDetails } from "./ProgressGaugeCard";

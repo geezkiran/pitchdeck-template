@@ -1,19 +1,16 @@
 import Image from "next/image";
-import { HeadingBlock, Slide, SlideLead, TextBlock } from "@/components/shared";
+import { HeadingBlock, Slide, SlideLead } from "@/components/shared";
 
 export function AppIntroSlide3() {
   return (
     <Slide id="app-intro-3" variant="gradient">
-      <div className="flex flex-col-reverse items-center gap-10 md:flex-row md:items-center md:justify-between md:gap-16">
-        <SlideLead className="max-w-xl text-center md:text-left">
+      <div className="flex flex-row items-center justify-between gap-24">
+        <SlideLead className="max-w-xl text-left">
           <HeadingBlock as="h2" size="xl" className="text-foreground">
-            Track
+            Tracking from pickup to report.
           </HeadingBlock>
-          <TextBlock size="md" className="mx-auto mt-2 md:mx-0">
-          From the moment they leave to the second your report is ready, watch every step in real time.
-          </TextBlock>
         </SlideLead>
-        <div className="relative aspect-[9/19] w-56 shrink-0 sm:w-64 md:w-72">
+        <div className="relative aspect-[9/19] w-72 shrink-0">
           <Image
             src="/images/app-screenshot-3.png"
             alt="AarthiLife app"

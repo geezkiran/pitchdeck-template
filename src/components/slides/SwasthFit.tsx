@@ -1,11 +1,11 @@
-import { HeadingBlock, Slide, SlideBody } from "@/components/shared";
+import { HeadingBlock, ProgressGaugeCard, Slide, SlideBody } from "@/components/shared";
 
 export function SwasthFitSlide() {
   return (
     <Slide
       id="swasthfit"
-      className="pt-20 md:pt-16"
-      contentClassName="gap-6 md:gap-8"
+      className="pt-16"
+      contentClassName="gap-14 md:gap-20"
       centerContent={false}
     >
       <SlideBody className="mt-0">
@@ -34,10 +34,52 @@ export function SwasthFitSlide() {
         </div>
       </SlideBody>
 
-      <div className="grid h-64 md:h-80 grid-cols-3 gap-3 md:gap-4 mt-14 md:mt-20">
-        <div className="min-h-0 min-w-0 rounded-[16px] bg-gray-400/[0.05]" />
-        <div className="min-h-0 min-w-0 rounded-[16px] bg-gray-400/[0.05]" />
-        <div className="min-h-0 min-w-0 rounded-[16px] bg-gray-400/[0.05]" />
+      <div className="grid h-80 grid-cols-3 gap-4">
+        <ProgressGaugeCard
+          value={26}
+          status="Share of Dr Lal PathLabs business"
+          detail="Up from 23% in Q3 FY25"
+          actionLabel="View details"
+          sketchDelay={0}
+          reportDetails={{
+            title: "SwasthFit — share of business",
+            description:
+              "SwasthFit has grown from an offering into a material revenue franchise for Dr Lal PathLabs.",
+            metrics: [
+              { label: "Share of business, Q3 FY26", value: "26%" },
+              { label: "Share of business, Q3 FY25", value: "23%" },
+            ],
+            bullets: ["Preventive packages are now core business for Dr Lal PathLabs."],
+          }}
+        />
+        <ProgressGaugeCard
+          value={10.6}
+          status="Revenue growth"
+          detail="YoY, Q3 FY26"
+          actionLabel="View details"
+          sketchDelay={200}
+          reportDetails={{
+            title: "SwasthFit — revenue growth",
+            description: "Dr Lal PathLabs reported revenue growth of 10.6% in Q3 FY26.",
+            metrics: [{ label: "Revenue growth, Q3 FY26", value: "+10.6% YoY" }],
+          }}
+        />
+        <ProgressGaugeCard
+          value={16.3}
+          status="EBITDA growth"
+          detail="Pre-exceptional items, Q3 FY26"
+          actionLabel="View details"
+          sketchDelay={400}
+          reportDetails={{
+            title: "SwasthFit — EBITDA growth",
+            description:
+              "EBITDA before exceptional items grew 16.3% in Q3 FY26, outpacing revenue growth.",
+            metrics: [
+              { label: "EBITDA growth (pre-exceptional), Q3 FY26", value: "+16.3% YoY" },
+              { label: "Revenue growth, Q3 FY26", value: "+10.6% YoY" },
+            ],
+          }}
+        />
       </div>
     </Slide>
   );

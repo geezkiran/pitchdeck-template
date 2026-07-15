@@ -14,13 +14,13 @@ const POINTS = [
 export function Blank8GridSlide() {
   return (
     <Slide id="blank-8-grid" variant="muted" contentClassName="justify-center">
-      <div className="grid h-full w-full grid-cols-4 grid-rows-2 gap-3 md:gap-4">
+      <div className="grid h-full w-full grid-cols-4 grid-rows-2 gap-4">
         {POINTS.map((point, index) => (
           <div
             key={index}
-            className="flex min-h-0 min-w-0 items-center rounded-[16px] bg-black/[0.05] p-4 md:p-5"
+            className="flex min-h-0 min-w-0 items-center rounded-[16px] bg-black/[0.05] p-5"
           >
-            <p className="text-sm font-medium leading-snug text-foreground md:text-base">
+            <p className="text-base font-medium leading-snug text-foreground">
               {point}
             </p>
           </div>

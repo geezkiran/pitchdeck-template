@@ -93,8 +93,8 @@ function PillarGraphic({
         className={cn(
           "mb-5 shrink-0 object-contain transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
           expanded
-            ? "h-32 w-32 scale-110 md:mb-6 md:h-36 md:w-36"
-            : "h-28 w-28 md:mb-6 md:h-32 md:w-32"
+            ? "mb-6 h-36 w-36 scale-110"
+            : "mb-6 h-32 w-32"
         )}
       />
     );
@@ -115,7 +115,7 @@ function PillarIcon({ pillar }: { pillar: Pillar }) {
         alt=""
         width={500}
         height={500}
-        className="h-9 w-9 object-contain opacity-30 md:h-10 md:w-10"
+        className="h-10 w-10 object-contain opacity-30"
       />
     );
   }
@@ -161,17 +161,17 @@ function PillarCard({
       ) : null}
       <div
         className={cn(
-          "flex min-h-0 flex-1 flex-col px-5 py-6 transition-[opacity,transform] duration-500 md:px-6 md:py-8",
+          "flex min-h-0 flex-1 flex-col px-6 py-8 transition-[opacity,transform] duration-500",
           expanded
             ? "scale-100 opacity-100"
             : "pointer-events-none absolute inset-0 scale-[0.98] opacity-0"
         )}
       >
         <PillarGraphic pillar={pillar} expanded={expanded} />
-        <h3 className="mt-2 text-[1.625rem] font-semibold leading-tight tracking-[-0.02em] text-primary md:text-[1.975rem]">
+        <h3 className="mt-2 text-[1.975rem] font-semibold leading-tight tracking-[-0.02em] text-primary">
           {pillar.title}
         </h3>
-        <div className="mt-4 min-h-0 overflow-y-auto text-sm leading-relaxed md:mt-5 md:text-[0.9375rem]">
+        <div className="mt-5 min-h-0 overflow-y-auto text-[0.9375rem] leading-relaxed">
           <p className="text-muted">{pillar.before}</p>
         </div>
       </div>
@@ -184,10 +184,10 @@ function PillarCard({
             : "scale-100 opacity-100"
         )}
       >
-        <div className="flex flex-1 items-center justify-center [&_svg]:h-9 [&_svg]:w-9 md:[&_svg]:h-10 md:[&_svg]:w-10">
+        <div className="flex flex-1 items-center justify-center [&_svg]:h-10 [&_svg]:w-10">
           <PillarIcon pillar={pillar} />
         </div>
-        <p className="max-w-[4.5rem] text-center text-[9px] font-semibold uppercase leading-snug tracking-[0.1em] text-muted md:max-w-none md:text-[10px]">
+        <p className="max-w-none text-center text-[10px] font-semibold uppercase leading-snug tracking-[0.1em] text-muted">
           {pillar.shortLabel}
         </p>
       </div>
@@ -200,7 +200,7 @@ function PillarCardRow() {
 
   return (
     <div
-      className="flex h-[min(56dvh,420px)] w-full min-w-0 gap-2 overflow-visible md:h-[min(58dvh,440px)] md:gap-3"
+      className="flex h-[min(58dvh,440px)] w-full min-w-0 gap-3 overflow-visible"
       role="list"
       aria-label="Growth flywheel pillars"
     >
@@ -223,7 +223,7 @@ export function BusinessModelSlide() {
     <Slide
       id="proposed-changes"
       variant="muted"
-      contentClassName="min-h-0 gap-5 md:gap-6"
+      contentClassName="min-h-0 gap-6"
     >
       <SlideLead>
         <SlideIntro>
@@ -232,7 +232,7 @@ export function BusinessModelSlide() {
           </HeadingBlock>
         </SlideIntro>
       </SlideLead>
-      <SlideBody className="min-h-0 flex-1 justify-end pb-1 md:pb-2">
+      <SlideBody className="min-h-0 flex-1 justify-end pb-2">
         <PillarCardRow />
       </SlideBody>
     </Slide>
