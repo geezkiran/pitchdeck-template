@@ -1,12 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import {
   HeadingBlock,
-  Icon3D,
-  type Icon3DVariant,
   Slide,
   SlideBody,
   SlideIntro,
@@ -18,9 +15,6 @@ interface Pillar {
   title: string;
   shortLabel: string;
   before: string;
-  icon: Icon3DVariant;
-  imageSrc?: string;
-  cardBackground?: string;
   arcs: [string, string, string];
 }
 
@@ -31,8 +25,6 @@ const pillars: Pillar[] = [
     shortLabel: "Personalisation",
     before:
       "Use previous reports, age, gender, risk profile and family history to make the experience relevant.",
-    icon: "memory",
-    cardBackground: "/images/activity-tracking.jpeg",
     arcs: ["#a142f4", "#4285f4", "#34a853"],
   },
   {
@@ -41,8 +33,6 @@ const pillars: Pillar[] = [
     shortLabel: "Repeat behaviour",
     before:
       "Remind customers when an annual or clinically appropriate follow-up check is due.",
-    icon: "tools",
-    imageSrc: "/images/scheduling-calendar.png",
     arcs: ["#4285f4", "#ea4335", "#fbbc04"],
   },
   {
@@ -51,8 +41,6 @@ const pillars: Pillar[] = [
     shortLabel: "Higher value",
     before:
       "Move customers from basic screening toward deeper packages when their health context justifies it.",
-    icon: "orchestration",
-    imageSrc: "/images/sample-tracking-pin.png",
     arcs: ["#4285f4", "#34a853", "#fbbc04"],
   },
   {
@@ -61,8 +49,6 @@ const pillars: Pillar[] = [
     shortLabel: "Margin accretion",
     before:
       "Increase tests and revenue per customer while leveraging the existing laboratory, centre and home-collection infrastructure.",
-    icon: "guardrails",
-    imageSrc: "/images/report-delivery-book.png",
     arcs: ["#34a853", "#4285f4", "#ea4335"],
   },
 ];
@@ -74,53 +60,6 @@ function getCardFlexClass(index: number, activeIndex: number, expanded: boolean)
   if (distance === 1) return "flex-[0.92]";
 
   return "flex-1";
-}
-
-function PillarGraphic({
-  pillar,
-  expanded,
-}: {
-  pillar: Pillar;
-  expanded: boolean;
-}) {
-  if (pillar.imageSrc) {
-    return (
-      <Image
-        src={pillar.imageSrc}
-        alt=""
-        width={500}
-        height={500}
-        className={cn(
-          "mb-5 shrink-0 object-contain transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
-          expanded
-            ? "mb-6 h-36 w-36 scale-110"
-            : "mb-6 h-32 w-32"
-        )}
-      />
-    );
-  }
-
-  return null;
-}
-
-function PillarIcon({ pillar }: { pillar: Pillar }) {
-  if (pillar.cardBackground) {
-    return null;
-  }
-
-  if (pillar.imageSrc) {
-    return (
-      <Image
-        src={pillar.imageSrc}
-        alt=""
-        width={500}
-        height={500}
-        className="h-10 w-10 object-contain opacity-30"
-      />
-    );
-  }
-
-  return <Icon3D variant={pillar.icon} size="sm" />;
 }
 
 function PillarCard({
@@ -149,16 +88,6 @@ function PillarCard({
         expanded && "scale-[1.03] shadow-[var(--shadow-card)]"
       )}
     >
-      {pillar.cardBackground ? (
-        <div
-          aria-hidden
-          className={cn(
-            "pointer-events-none absolute inset-0 bg-cover bg-center transition-opacity duration-500",
-            expanded ? "opacity-25" : "opacity-100"
-          )}
-          style={{ backgroundImage: `url(${pillar.cardBackground})` }}
-        />
-      ) : null}
       <div
         className={cn(
           "flex min-h-0 flex-1 flex-col px-6 py-8 transition-[opacity,transform] duration-500",
@@ -167,7 +96,6 @@ function PillarCard({
             : "pointer-events-none absolute inset-0 scale-[0.98] opacity-0"
         )}
       >
-        <PillarGraphic pillar={pillar} expanded={expanded} />
         <h3 className="mt-2 text-[1.975rem] font-semibold leading-tight tracking-[-0.02em] text-primary">
           {pillar.title}
         </h3>
@@ -178,15 +106,12 @@ function PillarCard({
 
       <div
         className={cn(
-          "flex min-h-0 flex-1 flex-col items-center justify-end gap-5 px-2 pb-8 pt-6 transition-[opacity,transform] duration-500",
+          "relative flex min-h-0 flex-1 flex-col items-center justify-end gap-5 px-2 pb-8 pt-6 transition-[opacity,transform] duration-500",
           expanded
             ? "pointer-events-none absolute inset-0 scale-[0.96] opacity-0"
             : "scale-100 opacity-100"
         )}
       >
-        <div className="flex flex-1 items-center justify-center [&_svg]:h-10 [&_svg]:w-10">
-          <PillarIcon pillar={pillar} />
-        </div>
         <p className="max-w-none text-center text-[10px] font-semibold uppercase leading-snug tracking-[0.1em] text-muted">
           {pillar.shortLabel}
         </p>
