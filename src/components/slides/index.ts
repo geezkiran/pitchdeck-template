@@ -5,7 +5,6 @@ import { ThyrocareSlide } from "./Thyrocare";
 import { CompetitionAlreadySlide } from "./Introducing";
 import { BusinessModelSlide } from "./Flywheel";
 import { PerformanceSlide } from "./Performance";
-import { AskSlide } from "./Patients";
 import { TitleSlide } from "./AarthiLife";
 import { AppIntroSlide } from "./Discover";
 import { AppIntroSlide2 } from "./Booking";
@@ -13,19 +12,24 @@ import { AppIntroSlide3 } from "./Track";
 import { AppIntroSlide4 } from "./Understand";
 import { AppIntroSlide5 } from "./Loop";
 import { StatementSlide } from "./Diagnostics";
-import { Blank8GridSlide } from "./Blank8Grid";
+import { ProblemSlide } from "./Problem";
+import { StrengthsSlide } from "./Strengths";
+import { SmarterSlide } from "./Smarter";
+import { ShiftSlide } from "./Shift";
+import { RelationshipSlide } from "./Relationship";
 
-/** Narrative: introduction → statement → about → competition → solution → introducing → app intro → expected results → ask */
+/** Narrative: introduction → statement → about → competition → solution → strengths → the shift → introducing → app intro → expected results → relationship */
 export const slideSections = [
   { label: "Introduction", slides: [0, 1] },
   { label: "About", slides: [2] },
   { label: "Competition", slides: [3, 4, 5] },
   { label: "Solution", slides: [6] },
-  { label: "Blank", slides: [7] },
-  { label: "Introducing", slides: [8] },
-  { label: "App", slides: [9, 10, 11, 12, 13] },
-  { label: "Expected results", slides: [14] },
-  { label: "The ask", slides: [15] },
+  { label: "Strengths", slides: [7] },
+  { label: "The shift", slides: [8, 9, 10] },
+  { label: "Introducing", slides: [11] },
+  { label: "App", slides: [12, 13, 14, 15, 16] },
+  { label: "Expected results", slides: [17] },
+  { label: "Relationship", slides: [18] },
 ] as const;
 
 export const slideLabels = [
@@ -36,7 +40,10 @@ export const slideLabels = [
   "SwasthFit",
   "Thyrocare",
   "Key Initiatives",
-  "Blank",
+  "Strengths",
+  "The Problem",
+  "Smarter",
+  "The Shift",
   "Introducing",
   "App 1",
   "App 2",
@@ -44,7 +51,7 @@ export const slideLabels = [
   "App 4",
   "App 5",
   "Performance",
-  "The Ask",
+  "Relationship",
 ];
 
 export const slides = [
@@ -55,7 +62,10 @@ export const slides = [
   SwasthFitSlide,
   ThyrocareSlide,
   BusinessModelSlide,
-  Blank8GridSlide,
+  StrengthsSlide,
+  ProblemSlide,
+  SmarterSlide,
+  ShiftSlide,
   CompetitionAlreadySlide,
   AppIntroSlide,
   AppIntroSlide2,
@@ -63,5 +73,5 @@ export const slides = [
   AppIntroSlide4,
   AppIntroSlide5,
   PerformanceSlide,
-  AskSlide,
+  RelationshipSlide,
 ];

@@ -11,7 +11,12 @@ export function TitleSlide() {
   return (
     <Slide id="title" variant="gradient">
       <SlideLead className="w-full items-start">
-        <HeadingBlock as="h1" size="xl" gradient>
+        <HeadingBlock
+          as="h1"
+          size="xl"
+          gradient
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-[6rem]"
+        >
           AarthiLife
         </HeadingBlock>
         <TextBlock size="md">

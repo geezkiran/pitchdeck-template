@@ -20,6 +20,7 @@ interface Pillar {
   before: string;
   icon: Icon3DVariant;
   imageSrc?: string;
+  cardBackground?: string;
   arcs: [string, string, string];
 }
 
@@ -31,7 +32,7 @@ const pillars: Pillar[] = [
     before:
       "Use previous reports, age, gender, risk profile and family history to make the experience relevant.",
     icon: "memory",
-    imageSrc: "/images/patient-identity-folder.png",
+    cardBackground: "/images/activity-tracking.jpeg",
     arcs: ["#a142f4", "#4285f4", "#34a853"],
   },
   {
@@ -103,6 +104,10 @@ function PillarGraphic({
 }
 
 function PillarIcon({ pillar }: { pillar: Pillar }) {
+  if (pillar.cardBackground) {
+    return null;
+  }
+
   if (pillar.imageSrc) {
     return (
       <Image
@@ -144,6 +149,16 @@ function PillarCard({
         expanded && "scale-[1.03] shadow-[var(--shadow-card)]"
       )}
     >
+      {pillar.cardBackground ? (
+        <div
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute inset-0 bg-cover bg-center transition-opacity duration-500",
+            expanded ? "opacity-25" : "opacity-100"
+          )}
+          style={{ backgroundImage: `url(${pillar.cardBackground})` }}
+        />
+      ) : null}
       <div
         className={cn(
           "flex min-h-0 flex-1 flex-col px-5 py-6 transition-[opacity,transform] duration-500 md:px-6 md:py-8",

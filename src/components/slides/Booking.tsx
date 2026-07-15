@@ -4,7 +4,7 @@ import { HeadingBlock, Slide, SlideLead, TextBlock } from "@/components/shared";
 export function AppIntroSlide2() {
   return (
     <Slide id="app-intro-2" variant="gradient">
-      <div className="flex flex-col-reverse items-center gap-10 md:flex-row-reverse md:items-center md:justify-between md:gap-16">
+      <div className="flex flex-col-reverse items-center justify-center gap-10 md:flex-row-reverse md:items-center md:gap-12">
         <SlideLead className="max-w-xl text-center md:text-left">
           <HeadingBlock as="h2" size="xl" className="text-foreground">
             Book
@@ -14,9 +14,9 @@ export function AppIntroSlide2() {
           Book for yourself or your whole family, choose a time that works, pay without the hassle, and walk in already prepared.
           </TextBlock>
         </SlideLead>
-        <div className="relative aspect-[9/19] w-56 shrink-0 sm:w-64 md:w-72">
+        <div className="relative aspect-[9/19] w-60 shrink-0 sm:w-64 md:w-72">
           <Image
-            src="/images/app-screenshot-2.png"
+            src="/images/catalogue.png"
             alt="AarthiLife app"
             fill
             className="object-contain"
