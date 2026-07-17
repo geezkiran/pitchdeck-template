@@ -255,6 +255,12 @@ export function ProgressGaugeCard({
           </div>
         </div>
 
+        {reportDetails?.bullets?.[0] && (
+          <p className="mx-auto mt-2 max-w-[15rem] text-center text-[11px] font-medium leading-snug text-muted">
+            {reportDetails.bullets[0]}
+          </p>
+        )}
+
         {actionLabel && (
           <div className="mt-auto flex shrink-0 justify-center pt-2">
             {reportDetails ? (

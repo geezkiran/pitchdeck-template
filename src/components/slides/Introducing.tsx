@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { HeadingBlock, Slide, TextBlock } from "@/components/shared";
 
 export function CompetitionAlreadySlide() {
@@ -7,8 +8,19 @@ export function CompetitionAlreadySlide() {
       variant="gradient"
       contentClassName="items-center justify-center"
     >
-      <HeadingBlock size="xl" gradient className="max-w-4xl text-center">
-        Introducing AarthiLife
+      <HeadingBlock
+        size="xl"
+        gradient
+        className="flex max-w-4xl flex-wrap items-center justify-center gap-x-5 text-center"
+      >
+        <span className="text-black">Introducing</span>
+        <Image
+          src="/images/aarthilife-logo.png"
+          alt="AarthiLife"
+          width={447}
+          height={95}
+          className="h-[69px] w-auto"
+        />
       </HeadingBlock>
       <TextBlock size="md" className="max-w-3xl text-center text-muted">
         An affordable preventive-health programme that helps individuals and

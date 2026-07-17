@@ -1,164 +1,152 @@
 "use client";
 
-import { useState } from "react";
-import { cn } from "@/lib/utils";
-import {
-  HeadingBlock,
-  Slide,
-  SlideBody,
-  SlideIntro,
-  SlideLead,
-} from "@/components/shared";
+import { Fragment } from "react";
+import { Slide, SlideBody } from "@/components/shared";
 
 interface Pillar {
   id: string;
   title: string;
-  shortLabel: string;
-  before: string;
-  arcs: [string, string, string];
+  description: string;
+  icon: "personalisation" | "repeat" | "packages" | "margin";
 }
 
 const pillars: Pillar[] = [
   {
     id: "personalisation",
     title: "Digital personalisation",
-    shortLabel: "Personalisation",
-    before:
+    description:
       "Use previous reports, age, gender, risk profile and family history to make the experience relevant.",
-    arcs: ["#a142f4", "#4285f4", "#34a853"],
+    icon: "personalisation",
   },
   {
     id: "repeat",
     title: "Repeat behaviour",
-    shortLabel: "Repeat behaviour",
-    before:
+    description:
       "Remind customers when an annual or clinically appropriate follow-up check is due.",
-    arcs: ["#4285f4", "#ea4335", "#fbbc04"],
+    icon: "repeat",
   },
   {
     id: "packages",
     title: "Higher-value packages",
-    shortLabel: "Higher value",
-    before:
+    description:
       "Move customers from basic screening toward deeper packages when their health context justifies it.",
-    arcs: ["#4285f4", "#34a853", "#fbbc04"],
+    icon: "packages",
   },
   {
     id: "margin",
     title: "Margin accretion",
-    shortLabel: "Margin accretion",
-    before:
+    description:
       "Increase tests and revenue per customer while leveraging the existing laboratory, centre and home-collection infrastructure.",
-    arcs: ["#34a853", "#4285f4", "#ea4335"],
+    icon: "margin",
   },
 ];
 
-function getCardFlexClass(index: number, activeIndex: number, expanded: boolean) {
-  if (expanded) return "z-10 flex-[1.65]";
+function PillarIcon({ variant }: { variant: Pillar["icon"] }) {
+  const common = {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    className: "h-5 w-5",
+  };
 
-  const distance = Math.abs(index - activeIndex);
-  if (distance === 1) return "flex-[0.92]";
-
-  return "flex-1";
+  switch (variant) {
+    case "personalisation":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="8" r="3.2" />
+          <path d="M5.5 19.5c1.4-3.4 4-5 6.5-5s5.1 1.6 6.5 5" />
+        </svg>
+      );
+    case "repeat":
+      return (
+        <svg {...common}>
+          <path d="M4 12a8 8 0 0 1 13.66-5.66L20 8" />
+          <path d="M20 4v4h-4" />
+          <path d="M20 12a8 8 0 0 1-13.66 5.66L4 16" />
+          <path d="M4 20v-4h4" />
+        </svg>
+      );
+    case "packages":
+      return (
+        <svg {...common}>
+          <path d="M12 3 21 8v8l-9 5-9-5V8z" />
+          <path d="M3 8l9 5 9-5" />
+          <path d="M12 13v8" />
+        </svg>
+      );
+    case "margin":
+      return (
+        <svg {...common}>
+          <path d="M3 17l6-6 4 4 8-8" />
+          <path d="M15 6h6v6" />
+        </svg>
+      );
+  }
 }
 
-function PillarCard({
-  pillar,
-  index,
-  activeIndex,
-  expanded,
-  onEnter,
-}: {
-  pillar: Pillar;
-  index: number;
-  activeIndex: number;
-  expanded: boolean;
-  onEnter: () => void;
-}) {
-  return (
-    <article
-      onMouseEnter={onEnter}
-      onFocus={onEnter}
-      tabIndex={0}
-      className={cn(
-        "relative flex min-w-0 flex-col rounded-[20px] border border-black/[0.06] bg-background outline-none",
-        expanded ? "overflow-visible" : "overflow-hidden",
-        "transition-[flex-grow,transform,box-shadow] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
-        getCardFlexClass(index, activeIndex, expanded),
-        expanded && "scale-[1.03] shadow-[var(--shadow-card)]"
-      )}
-    >
-      <div
-        className={cn(
-          "flex min-h-0 flex-1 flex-col px-6 py-8 transition-[opacity,transform] duration-500",
-          expanded
-            ? "scale-100 opacity-100"
-            : "pointer-events-none absolute inset-0 scale-[0.98] opacity-0"
-        )}
-      >
-        <h3 className="mt-2 text-[1.975rem] font-semibold leading-tight tracking-[-0.02em] text-primary">
-          {pillar.title}
-        </h3>
-        <div className="mt-5 min-h-0 overflow-y-auto text-[0.9375rem] leading-relaxed">
-          <p className="text-muted">{pillar.before}</p>
-        </div>
-      </div>
-
-      <div
-        className={cn(
-          "relative flex min-h-0 flex-1 flex-col items-center justify-end gap-5 px-2 pb-8 pt-6 transition-[opacity,transform] duration-500",
-          expanded
-            ? "pointer-events-none absolute inset-0 scale-[0.96] opacity-0"
-            : "scale-100 opacity-100"
-        )}
-      >
-        <p className="max-w-none text-center text-[10px] font-semibold uppercase leading-snug tracking-[0.1em] text-muted">
-          {pillar.shortLabel}
-        </p>
-      </div>
-    </article>
-  );
-}
-
-function PillarCardRow() {
-  const [activeIndex, setActiveIndex] = useState(0);
+function FlywheelCircle() {
+  const n = pillars.length;
+  const iconR = 38;
+  const textR = 60;
 
   return (
-    <div
-      className="flex h-[min(58dvh,440px)] w-full min-w-0 gap-3 overflow-visible"
-      role="list"
-      aria-label="Growth flywheel pillars"
-    >
-      {pillars.map((pillar, index) => (
-        <PillarCard
-          key={pillar.id}
-          pillar={pillar}
-          index={index}
-          activeIndex={activeIndex}
-          expanded={activeIndex === index}
-          onEnter={() => setActiveIndex(index)}
-        />
-      ))}
+    <div className="relative mx-auto aspect-square h-[min(64dvh,540px)]">
+      <div
+        className="absolute rounded-full border border-dashed border-accent/30"
+        style={{ inset: `${50 - iconR}%` }}
+      />
+
+      <h2 className="absolute left-1/2 top-1/2 w-56 -translate-x-1/2 -translate-y-1/2 text-center text-3xl font-semibold tracking-[-0.01em] text-primary">
+        Growth Flywheel
+      </h2>
+
+      {pillars.map((pillar, i) => {
+        const angle = (-90 + (360 / n) * i) * (Math.PI / 180);
+        const cos = Math.cos(angle);
+        const sin = Math.sin(angle);
+        const iconX = 50 + iconR * cos;
+        const iconY = 50 + iconR * sin;
+        // Align every title's top to the icon's vertical center.
+        const textY = iconY;
+        // Top/bottom pillars sit on the vertical axis, so their text would land
+        // on top of the icon — push those blocks to the right of the icon.
+        const onVerticalAxis = Math.abs(cos) < 0.01;
+        const textX = onVerticalAxis ? iconX + 8 : 50 + textR * cos;
+
+        return (
+          <Fragment key={pillar.id}>
+            <span
+              className="absolute flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-accent bg-background text-accent shadow-[var(--shadow-card)]"
+              style={{ left: `${iconX}%`, top: `${iconY}%` }}
+            >
+              <PillarIcon variant={pillar.icon} />
+            </span>
+            <div
+              className={`absolute flex w-40 flex-col text-left ${pillar.id === "personalisation" ? "flex-col-reverse -translate-y-[calc(100%-1rem)]" : "-translate-y-3"} ${onVerticalAxis ? "" : "-translate-x-1/2"}`}
+              style={{ left: `${textX}%`, top: `${textY}%` }}
+            >
+              <h3 className="text-sm font-semibold leading-tight tracking-[-0.01em] text-primary">
+                {pillar.title}
+              </h3>
+              <p className={`text-xs leading-relaxed text-muted ${pillar.id === "personalisation" ? "mb-2" : "mt-2"}`}>
+                {pillar.description}
+              </p>
+            </div>
+          </Fragment>
+        );
+      })}
     </div>
   );
 }
 
 export function BusinessModelSlide() {
   return (
-    <Slide
-      id="proposed-changes"
-      variant="muted"
-      contentClassName="min-h-0 gap-6"
-    >
-      <SlideLead>
-        <SlideIntro>
-          <HeadingBlock gradient size="xl">
-            The growth flywheel
-          </HeadingBlock>
-        </SlideIntro>
-      </SlideLead>
-      <SlideBody className="min-h-0 flex-1 justify-end pb-2">
-        <PillarCardRow />
+    <Slide id="proposed-changes" variant="muted" contentClassName="min-h-0 items-center justify-center">
+      <SlideBody className="flex min-h-0 flex-1 items-center justify-center">
+        <FlywheelCircle />
       </SlideBody>
     </Slide>
   );

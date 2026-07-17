@@ -40,7 +40,7 @@ export function Slide({
           {children}
         </div>
         {footer && !pinFooter ? (
-          <div className="shrink-0 pt-4 md:pt-5">{footer}</div>
+          <div className={cn("shrink-0 pt-4 md:pt-5", footerClassName)}>{footer}</div>
         ) : null}
       </div>
       {footer && pinFooter ? (
